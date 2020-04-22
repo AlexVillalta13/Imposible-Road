@@ -42,6 +42,7 @@ public class PlayerController_FSM : MonoBehaviour
     private void FixedUpdate()
     {
         SetVelocity();
+        Raycasting();
     }
 
     private void SetVelocity()
@@ -55,5 +56,18 @@ public class PlayerController_FSM : MonoBehaviour
         velocityVector.y = yVelocity;
 
         rigid.velocity = velocityVector;
+    }
+
+    public void TransitionToState(PlayerBaseState state)
+    {
+        currentState = state;
+        currentState.EnterState(this);
+    }
+
+    private void Raycasting()
+    {
+        RaycastHit hitInfo;
+        Physics.Raycast(transform.position, Vector3.down, out hitInfo, 10f);
+        Debug.DrawRay(transform.position, directionTransform.transform.TransformDirection(Vector3.down) * 10f, Color.yellow);
     }
 }
