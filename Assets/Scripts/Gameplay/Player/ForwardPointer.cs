@@ -17,4 +17,9 @@ public class ForwardPointer : MonoBehaviour
     {
         rotation.y += rotationVelocity * Time.deltaTime;
     }
+
+    public void SetRotation(Vector3 newRotation)
+    {
+        rotation = newRotation;
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController_FSM : MonoBehaviour
 {
@@ -9,26 +10,32 @@ public class PlayerController_FSM : MonoBehaviour
     [SerializeField] float magnitudVelocity = 10f;
     [SerializeField] float maxYVelocity = 10f;
 
+    [SerializeField] float timeToDie = 5f;
+    public float TimeToDie { get { return timeToDie; } }
+    public float countdownToDie = Mathf.Infinity;
+    public bool canDie = true;
+
     [SerializeField] ForwardPointer directionTransform = null;
+    public ForwardPointer DirectionTransform { get { return directionTransform; } }
 
     private Rigidbody rigid;
+    [SerializeField] Image fadeInDeathImage = null;
 
-    private PlayerBaseState currentState;
-    public PlayerBaseState CurrentState
-    {
-        get { return currentState; }
-    }
+    public PlayerBaseState CurrentState { get; private set; }
 
     public readonly PlayerRunningState RunningState = new PlayerRunningState();
     public readonly PlayerFallingState FallingState = new PlayerFallingState();
 
     private void Awake()
     {
+        CurrentState = RunningState;
         rigid = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
+        CurrentState.Update(this);
+
         if(Input.GetKey(KeyCode.A))
         {
             directionTransform.Rotate(-rotationVelocity);
@@ -41,8 +48,14 @@ public class PlayerController_FSM : MonoBehaviour
 
     private void FixedUpdate()
     {
+        CurrentState.FixedUpdate(this);
+
         SetVelocity();
-        Raycasting();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        CurrentState.OnCollisionEnter(this, collision);
     }
 
     private void SetVelocity()
@@ -60,14 +73,14 @@ public class PlayerController_FSM : MonoBehaviour
 
     public void TransitionToState(PlayerBaseState state)
     {
-        currentState = state;
-        currentState.EnterState(this);
+        CurrentState = state;
+        CurrentState.EnterState(this);
     }
 
-    private void Raycasting()
+    public void SetAlphaDeathImage(float alpha)
     {
-        RaycastHit hitInfo;
-        Physics.Raycast(transform.position, Vector3.down, out hitInfo, 10f);
-        Debug.DrawRay(transform.position, directionTransform.transform.TransformDirection(Vector3.down) * 10f, Color.yellow);
+        Color temp = fadeInDeathImage.color;
+        temp.a = alpha;
+        fadeInDeathImage.color = temp;
     }
 }
