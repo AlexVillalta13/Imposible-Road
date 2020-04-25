@@ -358,7 +358,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854387913}
-  m_LocalRotation: {x: 0.31460837, y: 0.000005793028, z: -0.000017478449, w: 0.9492216}
+  m_LocalRotation: {x: 0.31460837, y: 0.0000057930274, z: -0.000017478449, w: 0.9492216}
   m_LocalPosition: {x: 0, y: 2.83, z: -1.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -729,7 +729,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809793269}
-  m_LocalRotation: {x: 0.31460837, y: 0.000005793028, z: -0.000017478449, w: 0.9492216}
+  m_LocalRotation: {x: 0.31460837, y: 0.0000057930274, z: -0.000017478449, w: 0.9492216}
   m_LocalPosition: {x: 0, y: 2.83, z: -1.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1142,11 +1142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rampsPrefab:
-  - {fileID: 2923161487030543160, guid: 77f129b2a9dd0aa469e7e1e0a381b8a7, type: 3}
-  - {fileID: 5517390058341011605, guid: 61c85b22a8e946a43b5fc0ca405e881f, type: 3}
-  - {fileID: 47683127735849743, guid: fa0853088d7713c448fe41a28301f05a, type: 3}
-  - {fileID: 8209965467854745900, guid: ef8fa28d6835b4f479c1886b64632ffc, type: 3}
-  - {fileID: 9207672567055672457, guid: 852614ca9c9644d43920ee3e4feb92d0, type: 3}
   - {fileID: 8209965467854745900, guid: ef8fa28d6835b4f479c1886b64632ffc, type: 3}
   - {fileID: 9207672567055672457, guid: 852614ca9c9644d43920ee3e4feb92d0, type: 3}
   initialRamp: {fileID: 354967798}
