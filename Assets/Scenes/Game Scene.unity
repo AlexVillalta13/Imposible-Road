@@ -1142,8 +1142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rampsPrefab:
-  - {fileID: 8209965467854745900, guid: ef8fa28d6835b4f479c1886b64632ffc, type: 3}
-  - {fileID: 9207672567055672457, guid: 852614ca9c9644d43920ee3e4feb92d0, type: 3}
+  - {fileID: 7416957941299181416, guid: c94ddf78084ae5149ac19064d8753bec, type: 3}
   initialRamp: {fileID: 354967798}
   rampsToInstantiate: 50
 --- !u!4 &2140306195
