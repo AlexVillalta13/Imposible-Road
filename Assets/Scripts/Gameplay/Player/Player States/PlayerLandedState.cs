@@ -7,7 +7,6 @@ public class PlayerLandedState : PlayerBaseState
     public override void EnterState(PlayerController_FSM player)
     {
         player.Bounce();
-        //player.GetComponent<Collider>().material.bounciness = 0f;
         player.countdownToRotate = 0f;
 
         player.StartCoroutine(Rotate(player));
@@ -33,6 +32,8 @@ public class PlayerLandedState : PlayerBaseState
         while (player.countdownToRotate < player.TimeToRotateLanded)
         {
             player.countdownToRotate += Time.deltaTime;
+            Quaternion step = Quaternion.RotateTowards(player.DirectionTransform.transform.rotation, player.landedRotation, 750f * Time.deltaTime);
+            player.DirectionTransform.SetRotation(step.eulerAngles);
             yield return null;
         }
 

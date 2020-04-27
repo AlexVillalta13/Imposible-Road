@@ -11,7 +11,6 @@ public class ForwardPointer : MonoBehaviour
     void Update()
     {
         transform.rotation = Quaternion.Euler(rotation);
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(rotation), 1000 * Time.deltaTime);
     }
 
     public void Rotate(float rotationVelocity)

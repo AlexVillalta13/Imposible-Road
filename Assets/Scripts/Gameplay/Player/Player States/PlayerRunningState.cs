@@ -6,7 +6,6 @@ public class PlayerRunningState : PlayerBaseState
 {
     public override void EnterState(PlayerController_FSM player)
     {
-        //player.GetComponent<Collider>().material.bounciness = 1f;
 
         player.SetAlphaDeathImage(0f);
     }

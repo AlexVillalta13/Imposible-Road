@@ -28,6 +28,7 @@ public class PlayerController_FSM : MonoBehaviour
     [SerializeField] float timeToRotateLanded = 0.2f;
     public float TimeToRotateLanded { get { return timeToRotateLanded; } }
     public float countdownToRotate = Mathf.Infinity;
+    public Quaternion landedRotation;
 
     // CACHE
     private Rigidbody rigid;

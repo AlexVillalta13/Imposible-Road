@@ -7,7 +7,6 @@ public class PlayerFallingState : PlayerBaseState
 {
     public override void EnterState(PlayerController_FSM player)
     {
-        //player.GetComponent<Collider>().material.bounciness = 1f;
 
         player.countdownToDie = player.TimeToDie;
     }
@@ -46,7 +45,8 @@ public class PlayerFallingState : PlayerBaseState
         Vector3 v = rotation.eulerAngles;
         v.x = 0f;
 
-        player.DirectionTransform.SetRotation(v);
+        player.landedRotation = Quaternion.Euler(v);
+        //player.DirectionTransform.SetRotation(v);
 
         Debug.DrawRay(collision.GetContact(0).point, normal, Color.red, 10f);
 
