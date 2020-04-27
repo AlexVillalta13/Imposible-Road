@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2077660667284568663}
   - component: {fileID: 2923161487030543160}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Curve Ramp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 306999743813589552}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Next Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,6 +161,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Left Curve Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f68dc292f08c33543bed322e0eee9139,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68dc292f08c33543bed322e0eee9139, type: 3}

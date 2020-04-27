@@ -7,11 +7,15 @@ public class PlayerFallingState : PlayerBaseState
 {
     public override void EnterState(PlayerController_FSM player)
     {
+        //player.GetComponent<Collider>().material.bounciness = 1f;
+
         player.countdownToDie = player.TimeToDie;
     }
     public override void Update(PlayerController_FSM player)
     {
-        if(player.canDie)
+        player.GetInput();
+
+        if (player.canDie)
         {
             player.countdownToDie -= Time.deltaTime;
 
@@ -26,7 +30,7 @@ public class PlayerFallingState : PlayerBaseState
     }
     public override void FixedUpdate(PlayerController_FSM player)
     {
-        
+        player.SetVelocity();
     }
 
     public override void OnCollisionEnter(PlayerController_FSM player, Collision collision)
@@ -46,15 +50,15 @@ public class PlayerFallingState : PlayerBaseState
 
         Debug.DrawRay(collision.GetContact(0).point, normal, Color.red, 10f);
 
-        Debug.Log("Point: " + collisionPoint);
-        Debug.Log("Normal: " + normal);
-        Debug.Log("Normal in world: " + normalInWorld);
-        Debug.Log("Direction: " + direction);
-        Debug.Log("Direction in local: " + directionInLocal);
-        Debug.Log("Rotation: " + v);
+        //Debug.Log("Point: " + collisionPoint);
+        //Debug.Log("Normal: " + normal);
+        //Debug.Log("Normal in world: " + normalInWorld);
+        //Debug.Log("Direction: " + direction);
+        //Debug.Log("Direction in local: " + directionInLocal);
+        //Debug.Log("Rotation: " + v);
 
 
 
-        player.TransitionToState(player.RunningState);
+        player.TransitionToState(player.landedState);
     }
 }

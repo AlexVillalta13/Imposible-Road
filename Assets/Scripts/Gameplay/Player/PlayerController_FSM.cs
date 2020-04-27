@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerController_FSM : MonoBehaviour
 {
+    // CONFIG DATA
     [SerializeField] float rotationVelocity = 100f;
 
     [SerializeField] float magnitudVelocity = 10f;
@@ -18,13 +19,25 @@ public class PlayerController_FSM : MonoBehaviour
     [SerializeField] ForwardPointer directionTransform = null;
     public ForwardPointer DirectionTransform { get { return directionTransform; } }
 
-    private Rigidbody rigid;
     [SerializeField] Image fadeInDeathImage = null;
 
+    [SerializeField] LayerMask rampLayer = 8;
+    public LayerMask RampLayer { get { return rampLayer; } }
+
+    [SerializeField] float bounceForce = 50f;
+    [SerializeField] float timeToRotateLanded = 0.2f;
+    public float TimeToRotateLanded { get { return timeToRotateLanded; } }
+    public float countdownToRotate = Mathf.Infinity;
+
+    // CACHE
+    private Rigidbody rigid;
+
+    // STATES
     public PlayerBaseState CurrentState { get; private set; }
 
     public readonly PlayerRunningState RunningState = new PlayerRunningState();
     public readonly PlayerFallingState FallingState = new PlayerFallingState();
+    public readonly PlayerLandedState landedState = new PlayerLandedState();
 
     private void Awake()
     {
@@ -35,22 +48,11 @@ public class PlayerController_FSM : MonoBehaviour
     private void Update()
     {
         CurrentState.Update(this);
-
-        if(Input.GetKey(KeyCode.A))
-        {
-            directionTransform.Rotate(-rotationVelocity);
-        }
-        else if(Input.GetKey(KeyCode.D)) 
-        {
-            directionTransform.Rotate(rotationVelocity);
-        }
     }
 
     private void FixedUpdate()
     {
         CurrentState.FixedUpdate(this);
-
-        SetVelocity();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -58,11 +60,23 @@ public class PlayerController_FSM : MonoBehaviour
         CurrentState.OnCollisionEnter(this, collision);
     }
 
-    private void SetVelocity()
+    public void GetInput()
+    {
+        if (Input.GetKey(KeyCode.A))
+        {
+            directionTransform.Rotate(-rotationVelocity);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            directionTransform.Rotate(rotationVelocity);
+        }
+    }
+
+    public void SetVelocity()
     {
         Vector3 velocityVector = directionTransform.transform.forward * magnitudVelocity;
         float yVelocity = rigid.velocity.y;
-        if (Mathf.Abs(yVelocity) > maxYVelocity)
+        if (yVelocity < -maxYVelocity)
         {
             yVelocity = -maxYVelocity;
         }
@@ -82,5 +96,18 @@ public class PlayerController_FSM : MonoBehaviour
         Color temp = fadeInDeathImage.color;
         temp.a = alpha;
         fadeInDeathImage.color = temp;
+    }
+
+    public void Bounce()
+    {
+        Vector3 currentVelocity = rigid.velocity;
+        rigid.velocity = Vector3.zero;
+
+        rigid.AddForce(Vector3.up * bounceForce, ForceMode.Impulse);
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, 4f);
     }
 }

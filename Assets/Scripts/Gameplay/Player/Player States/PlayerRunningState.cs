@@ -6,14 +6,17 @@ public class PlayerRunningState : PlayerBaseState
 {
     public override void EnterState(PlayerController_FSM player)
     {
+        //player.GetComponent<Collider>().material.bounciness = 1f;
+
         player.SetAlphaDeathImage(0f);
     }
     public override void Update(PlayerController_FSM player)
     {
-        
+        player.GetInput();
     }
     public override void FixedUpdate(PlayerController_FSM player)
     {
+        player.SetVelocity();
         Raycasting(player);
     }
     public override void OnCollisionEnter(PlayerController_FSM player, Collision collision)
@@ -23,15 +26,22 @@ public class PlayerRunningState : PlayerBaseState
 
     private void Raycasting(PlayerController_FSM player)
     {
-        Ray ray = new Ray(player.transform.position, Vector3.down);
-
-        RaycastHit hitInfo;
-        Debug.DrawRay(ray.origin, ray.direction * 3f, Color.red);
-
-        if (Physics.Raycast(ray, out hitInfo, 3f) == false)
+        if (Physics.CheckSphere(player.transform.position, 4f, player.RampLayer) == false)
         {
+            Debug.Log("Transition to Falling");
             player.TransitionToState(player.FallingState);
         }
+
+
+        //Collider[] hitInfo =  Physics.OverlapSphere(player.transform.position, 1f);
+
+        //foreach (Collider collider in hitInfo)
+        //{
+        //    if (collider.transform.GetComponentInParent<Ramp>())
+        //    {
+        //        return;
+        //    }
+        //}
     }
 
 

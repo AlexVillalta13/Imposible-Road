@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2409299854916063009}
   - component: {fileID: 9207672567055672457}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Close Curve Ramp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 251710140287845590}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Next Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,6 +161,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Right Close Ramp
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89c6f4e4d878bf2498ef3d5f0ef8bfb8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89c6f4e4d878bf2498ef3d5f0ef8bfb8, type: 3}

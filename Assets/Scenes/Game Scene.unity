@@ -131,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 90783655}
   - component: {fileID: 90783656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Forward Direction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,8 +358,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854387913}
-  m_LocalRotation: {x: 0.31460837, y: 0.0000058058686, z: -0.000017517195, w: 0.9492216}
-  m_LocalPosition: {x: 0, y: 2.83, z: -1.27}
+  m_LocalRotation: {x: 0.3146084, y: 0.000005805864, z: -0.000017517172, w: 0.9492216}
+  m_LocalPosition: {x: 0, y: 6.92, z: -0.58000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 1706165972}
   - component: {fileID: 1706165974}
   - component: {fileID: 1706165973}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -729,8 +729,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809793269}
-  m_LocalRotation: {x: 0.31460837, y: 0.0000058058686, z: -0.000017517195, w: 0.9492216}
-  m_LocalPosition: {x: 0, y: 2.83, z: -1.27}
+  m_LocalRotation: {x: 0.3146084, y: 0.000005805864, z: -0.000017517172, w: 0.9492216}
+  m_LocalPosition: {x: 0, y: 6.92, z: -0.58000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1893234040}
@@ -1040,7 +1040,7 @@ GameObject:
   - component: {fileID: 2129081298}
   - component: {fileID: 2129081297}
   - component: {fileID: 2129081301}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1055,7 +1055,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129081295}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.43, z: 0.61}
+  m_LocalPosition: {x: 0, y: 5.52, z: 1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706165972}
@@ -1071,7 +1071,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129081295}
   serializedVersion: 2
-  m_Mass: 5
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1112,6 +1112,12 @@ MonoBehaviour:
   canDie: 0
   directionTransform: {fileID: 90783656}
   fadeInDeathImage: {fileID: 740408062}
+  rampLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  bounceForce: 150
+  timeToRotateLanded: 0.3
+  countdownToRotate: Infinity
 --- !u!1 &2140306193
 GameObject:
   m_ObjectHideFlags: 0
