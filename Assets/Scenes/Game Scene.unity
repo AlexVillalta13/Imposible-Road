@@ -1109,7 +1109,7 @@ MonoBehaviour:
   maxYVelocity: 10
   timeToDie: 5
   countdownToDie: Infinity
-  canDie: 0
+  canDie: 1
   directionTransform: {fileID: 90783656}
   fadeInDeathImage: {fileID: 740408062}
   rampLayer:
@@ -1118,6 +1118,7 @@ MonoBehaviour:
   bounceForce: 150
   timeToRotateLanded: 0.3
   countdownToRotate: Infinity
+  landedRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2140306193
 GameObject:
   m_ObjectHideFlags: 0
