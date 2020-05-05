@@ -6,6 +6,13 @@ public class ScoreBox : MonoBehaviour
 {
     int scoreHolding;
 
+    ScoreManager scoreManager;
+
+    public void Init(ScoreManager scoreManager)
+    {
+        this.scoreManager = scoreManager;
+    }
+
     public void UpdateHoldingScore(int score)
     {
         scoreHolding = score;
@@ -13,6 +20,6 @@ public class ScoreBox : MonoBehaviour
 
     public void SumScore()
     {
-        Debug.Log("Score: " + scoreHolding);
+        scoreManager.AddScore(scoreHolding);
     }
 }

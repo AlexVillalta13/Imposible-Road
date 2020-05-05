@@ -15,12 +15,14 @@ public class RampsManager : MonoBehaviour
     [SerializeField] int rampsInitSpawn = 10;
 
     PlayerController_FSM player = null;
+    ScoreManager scoreManager = null;
 
     int currentScoreBoxSum = 1;
 
     private void Awake()
     {
         player = FindObjectOfType<PlayerController_FSM>();
+        scoreManager = FindObjectOfType<ScoreManager>();
     }
 
     private void Start()
@@ -31,7 +33,7 @@ public class RampsManager : MonoBehaviour
     private void InitialisePool()
     {
         oldRamp = initialRamp;
-        initialRamp.Init(this, player);
+        initialRamp.Init(this, player, scoreManager);
 
 
         for (int i = 0; i < rampsPrefab.Count; i++)
@@ -39,7 +41,7 @@ public class RampsManager : MonoBehaviour
             rampsGameObjectsList.Add(Instantiate(rampsPrefab[i], transform));
             rampsPool.Add(rampsGameObjectsList[i]);
             rampsGameObjectsList[i].gameObject.SetActive(false);
-            rampsGameObjectsList[i].Init(this, player);
+            rampsGameObjectsList[i].Init(this, player, scoreManager);
         }
 
         for (int i = 0; i < rampsInitSpawn; i++)
@@ -77,7 +79,7 @@ public class RampsManager : MonoBehaviour
         {
             int i = rampsGameObjectsList.IndexOf(rampToSpawn);
             newRamp = Instantiate(rampsGameObjectsList[i], transform);
-            newRamp.Init(this, player);
+            newRamp.Init(this, player, scoreManager);
             newRamp.ActivateScoreBoxes(ref currentScoreBoxSum);
         }
 

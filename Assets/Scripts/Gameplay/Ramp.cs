@@ -30,10 +30,15 @@ public class Ramp : MonoBehaviour
     }
 
 
-    public void Init(RampsManager rampsManager, PlayerController_FSM player) 
+    public void Init(RampsManager rampsManager, PlayerController_FSM player, ScoreManager scoreManager) 
     {
         this.rampsManager = rampsManager;
         this.player = player;
+
+        foreach(ScoreBox scoreBox in scoreBoxes)
+        {
+            scoreBox.Init(scoreManager);
+        }
     }
 
     public void ActivateScoreBoxes(ref int currentScoreBoxSum)
