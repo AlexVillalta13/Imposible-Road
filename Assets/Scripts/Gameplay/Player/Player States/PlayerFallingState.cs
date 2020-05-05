@@ -7,11 +7,13 @@ public class PlayerFallingState : PlayerBaseState
 {
     public override void EnterState(PlayerController_FSM player)
     {
-        player.canRotate = true;
+        //player.canRotate = true;
         player.countdownToDie = player.TimeToDie;
     }
     public override void Update(PlayerController_FSM player)
     {
+        player.RotatePlayer();
+
         if (player.canDie)
         {
             player.countdownToDie -= Time.deltaTime;
@@ -44,17 +46,8 @@ public class PlayerFallingState : PlayerBaseState
         v.x = 0f;
 
         player.landedRotation = Quaternion.Euler(v);
-        //player.DirectionTransform.SetRotation(v);
 
         Debug.DrawRay(collision.GetContact(0).point, normal, Color.red, 10f);
-
-        //Debug.Log("Point: " + collisionPoint);
-        //Debug.Log("Normal: " + normal);
-        //Debug.Log("Normal in world: " + normalInWorld);
-        //Debug.Log("Direction: " + direction);
-        //Debug.Log("Direction in local: " + directionInLocal);
-        //Debug.Log("Rotation: " + v);
-
 
 
         player.TransitionToState(player.landedState);

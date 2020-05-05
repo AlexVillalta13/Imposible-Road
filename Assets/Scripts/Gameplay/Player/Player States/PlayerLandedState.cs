@@ -6,7 +6,7 @@ public class PlayerLandedState : PlayerBaseState
 {
     public override void EnterState(PlayerController_FSM player)
     {
-        player.canRotate = false;
+        //player.canRotate = false;
         player.Bounce();
         player.countdownToRotate = 0f;
 

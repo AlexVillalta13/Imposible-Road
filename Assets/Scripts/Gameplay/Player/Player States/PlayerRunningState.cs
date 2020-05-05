@@ -6,12 +6,12 @@ public class PlayerRunningState : PlayerBaseState
 {
     public override void EnterState(PlayerController_FSM player)
     {
-        player.canRotate = true;
+        //player.canRotate = true;
         player.SetAlphaDeathImage(0f);
     }
     public override void Update(PlayerController_FSM player)
     {
-        
+        player.RotatePlayer();
     }
     public override void FixedUpdate(PlayerController_FSM player)
     {

@@ -9,15 +9,25 @@ public class PlayerController_FSM : MonoBehaviour
 {
     // CONFIG DATA
     [SerializeField] float rotationVelocity = 100f;
-    public bool canRotate = true;
 
     [SerializeField] float magnitudVelocity = 10f;
-    [SerializeField] float maxYVelocity = 10f;
+    [SerializeField] float maxFallingVelocity = 10f;
 
-    [SerializeField] float timeToDie = 5f;
+    [SerializeField] float timeToDie = 4f;
     public float TimeToDie { get { return timeToDie; } }
-    public float countdownToDie = Mathf.Infinity;
+    public float countdownToDie { get; set; }
     public bool canDie = true;
+
+    [SerializeField] float bounceForce = 50f;
+    [SerializeField] float timeToRotateLanded = 0.2f;
+    public float TimeToRotateLanded { get { return timeToRotateLanded; } }
+    public float countdownToRotate { get; set; }
+    public Quaternion landedRotation { get; set; }
+
+    float rotationInput;
+
+    // CACHE
+    private Rigidbody rigid;
 
     [SerializeField] ForwardPointer directionTransform = null;
     public ForwardPointer DirectionTransform { get { return directionTransform; } }
@@ -27,17 +37,7 @@ public class PlayerController_FSM : MonoBehaviour
     [SerializeField] LayerMask rampLayer = 8;
     public LayerMask RampLayer { get { return rampLayer; } }
 
-    [SerializeField] float bounceForce = 50f;
-    [SerializeField] float timeToRotateLanded = 0.2f;
-    public float TimeToRotateLanded { get { return timeToRotateLanded; } }
-    public float countdownToRotate = Mathf.Infinity;
-    public Quaternion landedRotation;
-
-    bool screenIsPressed = false;
-    float rotationInput;
-
-    // CACHE
-    private Rigidbody rigid;
+    PlayerInput playerInput;
 
     // STATES
     public PlayerBaseState CurrentState { get; private set; }
@@ -54,19 +54,21 @@ public class PlayerController_FSM : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("width: " + Screen.width);
+        countdownToDie = Mathf.Infinity;
+        countdownToRotate = Mathf.Infinity;
+
         CurrentState = RunningState;
-        rigid = GetComponent<Rigidbody>();
         TouchSimulation.Enable();
+
+        rigid = GetComponent<Rigidbody>();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     private void Update()
     {
         CurrentState.Update(this);
 
-        GetTouch();
-
-        RotatePlayer();
+        rotationInput = playerInput.GetTouch();
     }
 
     private void FixedUpdate()
@@ -79,29 +81,17 @@ public class PlayerController_FSM : MonoBehaviour
         CurrentState.OnCollisionEnter(this, collision);
     }
 
-    private void GetTouch()
+    private void OnTriggerEnter(Collider other)
     {
-        screenIsPressed = Touchscreen.current.primaryTouch.press.isPressed;
-        if (screenIsPressed)
-        {
-            float pointerScreenPosition = Touchscreen.current.primaryTouch.position.x.ReadValue();
-            if (pointerScreenPosition > Screen.width / 2)
-            {
-                rotationInput = 1;
-            }
-            else if (pointerScreenPosition <= Screen.width / 2)
-            {
-                rotationInput = -1;
-            }
-            return;
-        }
-        rotationInput = 0;
+        ScoreBox scoreBox = other.GetComponent<ScoreBox>();
+
+        if(scoreBox == null) { return; }
+
+        scoreBox.SumScore();
     }
 
     public void RotatePlayer()
     {
-        if(canRotate == false) { return; }
-
         directionTransform.Rotate(rotationVelocity * rotationInput);
     }
 
@@ -109,9 +99,9 @@ public class PlayerController_FSM : MonoBehaviour
     {
         Vector3 velocityVector = directionTransform.transform.forward * magnitudVelocity;
         float yVelocity = rigid.velocity.y;
-        if (yVelocity < -maxYVelocity)
+        if (yVelocity < -maxFallingVelocity)
         {
-            yVelocity = -maxYVelocity;
+            yVelocity = -maxFallingVelocity;
         }
         velocityVector.y = yVelocity;
 
@@ -137,10 +127,5 @@ public class PlayerController_FSM : MonoBehaviour
     public void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, 4f);
-    }
-
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        rotationInput = context.action.ReadValue<float>();
     }
 }
