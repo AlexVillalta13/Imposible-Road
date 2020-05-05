@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.UI;
 
 public class PlayerController_FSM : MonoBehaviour
 {
     // CONFIG DATA
     [SerializeField] float rotationVelocity = 100f;
+    public bool canRotate = true;
 
     [SerializeField] float magnitudVelocity = 10f;
     [SerializeField] float maxYVelocity = 10f;
@@ -30,6 +33,9 @@ public class PlayerController_FSM : MonoBehaviour
     public float countdownToRotate = Mathf.Infinity;
     public Quaternion landedRotation;
 
+    bool screenIsPressed = false;
+    float rotationInput;
+
     // CACHE
     private Rigidbody rigid;
 
@@ -40,15 +46,27 @@ public class PlayerController_FSM : MonoBehaviour
     public readonly PlayerFallingState FallingState = new PlayerFallingState();
     public readonly PlayerLandedState landedState = new PlayerLandedState();
 
+    public void TransitionToState(PlayerBaseState state)
+    {
+        CurrentState = state;
+        CurrentState.EnterState(this);
+    }
+
     private void Awake()
     {
+        Debug.Log("width: " + Screen.width);
         CurrentState = RunningState;
         rigid = GetComponent<Rigidbody>();
+        TouchSimulation.Enable();
     }
 
     private void Update()
     {
         CurrentState.Update(this);
+
+        GetTouch();
+
+        RotatePlayer();
     }
 
     private void FixedUpdate()
@@ -61,16 +79,30 @@ public class PlayerController_FSM : MonoBehaviour
         CurrentState.OnCollisionEnter(this, collision);
     }
 
-    public void GetInput()
+    private void GetTouch()
     {
-        if (Input.GetKey(KeyCode.A))
+        screenIsPressed = Touchscreen.current.primaryTouch.press.isPressed;
+        if (screenIsPressed)
         {
-            directionTransform.Rotate(-rotationVelocity);
+            float pointerScreenPosition = Touchscreen.current.primaryTouch.position.x.ReadValue();
+            if (pointerScreenPosition > Screen.width / 2)
+            {
+                rotationInput = 1;
+            }
+            else if (pointerScreenPosition <= Screen.width / 2)
+            {
+                rotationInput = -1;
+            }
+            return;
         }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            directionTransform.Rotate(rotationVelocity);
-        }
+        rotationInput = 0;
+    }
+
+    public void RotatePlayer()
+    {
+        if(canRotate == false) { return; }
+
+        directionTransform.Rotate(rotationVelocity * rotationInput);
     }
 
     public void SetVelocity()
@@ -84,12 +116,6 @@ public class PlayerController_FSM : MonoBehaviour
         velocityVector.y = yVelocity;
 
         rigid.velocity = velocityVector;
-    }
-
-    public void TransitionToState(PlayerBaseState state)
-    {
-        CurrentState = state;
-        CurrentState.EnterState(this);
     }
 
     public void SetAlphaDeathImage(float alpha)
@@ -107,8 +133,14 @@ public class PlayerController_FSM : MonoBehaviour
         rigid.AddForce(Vector3.up * bounceForce, ForceMode.Impulse);
     }
 
+    // Editor only
     public void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, 4f);
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        rotationInput = context.action.ReadValue<float>();
     }
 }

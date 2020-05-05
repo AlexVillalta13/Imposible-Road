@@ -6,12 +6,12 @@ public class PlayerRunningState : PlayerBaseState
 {
     public override void EnterState(PlayerController_FSM player)
     {
-
+        player.canRotate = true;
         player.SetAlphaDeathImage(0f);
     }
     public override void Update(PlayerController_FSM player)
     {
-        player.GetInput();
+        
     }
     public override void FixedUpdate(PlayerController_FSM player)
     {
@@ -27,7 +27,6 @@ public class PlayerRunningState : PlayerBaseState
     {
         if (Physics.CheckSphere(player.transform.position, 4f, player.RampLayer) == false)
         {
-            Debug.Log("Transition to Falling");
             player.TransitionToState(player.FallingState);
         }
 

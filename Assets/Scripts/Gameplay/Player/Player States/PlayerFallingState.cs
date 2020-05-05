@@ -7,13 +7,11 @@ public class PlayerFallingState : PlayerBaseState
 {
     public override void EnterState(PlayerController_FSM player)
     {
-
+        player.canRotate = true;
         player.countdownToDie = player.TimeToDie;
     }
     public override void Update(PlayerController_FSM player)
     {
-        player.GetInput();
-
         if (player.canDie)
         {
             player.countdownToDie -= Time.deltaTime;
