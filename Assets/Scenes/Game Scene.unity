@@ -121,12 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &90783655 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1354540364903056834, guid: 741a6496ae694bc41a54fea501f997dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1354540364946520677}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &185385647
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,8 +150,8 @@ Transform:
   m_Children:
   - {fileID: 2129081296}
   - {fileID: 2140306195}
-  - {fileID: 2091743426}
   - {fileID: 5934848775175052304}
+  - {fileID: 2091743426}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -938,16 +932,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 5934848774439951609, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
-        type: 3}
-      propertyPath: m_LookAt
-      value: 
-      objectReference: {fileID: 90783655}
-    - target: {fileID: 5934848774439951609, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
-        type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 90783655}
     - target: {fileID: 8894114278768197179, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -986,7 +970,7 @@ PrefabInstance:
     - target: {fileID: 8894114278768197179, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8894114278768197179, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
