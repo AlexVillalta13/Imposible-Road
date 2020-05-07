@@ -14,12 +14,12 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.01
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_Fog: 1
+  m_FogColor: {r: 0.6, g: 0.7607844, b: 0.82745105, a: 1}
+  m_FogMode: 1
+  m_FogDensity: 0.24
+  m_LinearFogStart: 150
+  m_LinearFogEnd: 200
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &90783655 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1354540364903056834, guid: 741a6496ae694bc41a54fea501f997dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1354540364946520677}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &185385647
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1028722484
 Light:
   m_ObjectHideFlags: 0
@@ -789,6 +795,11 @@ PrefabInstance:
       propertyPath: fadeInDeathImage
       value: 
       objectReference: {fileID: 740408062}
+    - target: {fileID: 1354540366857472432, guid: 741a6496ae694bc41a54fea501f997dc,
+        type: 3}
+      propertyPath: canDie
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1354540366857472437, guid: 741a6496ae694bc41a54fea501f997dc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -858,6 +869,11 @@ PrefabInstance:
       propertyPath: initialRamp
       value: 
       objectReference: {fileID: 354967798}
+    - target: {fileID: 1876917900713051956, guid: 80a909c50b0497348a96c64208fa27c1,
+        type: 3}
+      propertyPath: rampsInitSpawn
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1876917900713051957, guid: 80a909c50b0497348a96c64208fa27c1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -931,6 +947,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934848774439951609, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
+        type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 90783655}
+    - target: {fileID: 5934848774439951609, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
+        type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 90783655}
+    - target: {fileID: 5934848775931850948, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
+        type: 3}
+      propertyPath: m_HDR
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8894114278768197179, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
