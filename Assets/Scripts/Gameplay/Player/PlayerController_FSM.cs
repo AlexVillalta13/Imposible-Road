@@ -37,7 +37,7 @@ public class PlayerController_FSM : MonoBehaviour
     [SerializeField] LayerMask rampLayer = 8;
     public LayerMask RampLayer { get { return rampLayer; } }
 
-    PlayerInput playerInput;
+    PlayerTouchHandler playerInput;
 
     // STATES
     public PlayerBaseState CurrentState { get; private set; }
@@ -61,7 +61,7 @@ public class PlayerController_FSM : MonoBehaviour
         TouchSimulation.Enable();
 
         rigid = GetComponent<Rigidbody>();
-        playerInput = GetComponent<PlayerInput>();
+        playerInput = GetComponent<PlayerTouchHandler>();
     }
 
     private void Update()
