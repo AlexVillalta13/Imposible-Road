@@ -22,7 +22,7 @@ public class PlayerFallingState : PlayerBaseState
 
             if (player.countdownToDie <= 0f)
             {
-                player.GetComponent<PlayerGameLoopHandler>().FireDieEvent();
+                player.GetComponent<GameLoopStatePlayerHandler>().FireDieEvent();
             }
         }
     }

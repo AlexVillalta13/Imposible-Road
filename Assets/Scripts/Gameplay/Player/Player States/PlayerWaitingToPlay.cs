@@ -17,7 +17,7 @@ public class PlayerWaitingToPlay : PlayerBaseState
         bool screenIsPressed = Touchscreen.current.press.wasPressedThisFrame;
         if (screenIsPressed && EventSystem.current.IsPointerOverGameObject() == false)
         {
-            player.GetComponent<PlayerGameLoopHandler>().FireStartGameEvent();
+            player.GetComponent<GameLoopStatePlayerHandler>().FireStartGameEvent();
         }
     }
 }

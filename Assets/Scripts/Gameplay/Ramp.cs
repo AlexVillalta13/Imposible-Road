@@ -9,7 +9,7 @@ public class Ramp : MonoBehaviour
     float heightToDestroy = 5f;
 
     PlayerController_FSM player = null;
-    RampsManager rampsManager = null;
+    RampsPoolManager rampsManager = null;
 
     [SerializeField] List<ScoreBox> scoreBoxes = new List<ScoreBox>();
 
@@ -30,7 +30,7 @@ public class Ramp : MonoBehaviour
     }
 
 
-    public void Init(RampsManager rampsManager, PlayerController_FSM player, ScoreManager scoreManager) 
+    public void Init(RampsPoolManager rampsManager, PlayerController_FSM player, ScoreManager scoreManager) 
     {
         this.rampsManager = rampsManager;
         this.player = player;
