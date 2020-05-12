@@ -9,10 +9,10 @@ public class PlayerInputTouchHandler : MonoBehaviour
     public float GetTouch()
     {
         float rotationInput;
-        bool screenIsPressed = Touchscreen.current.primaryTouch.press.isPressed;
+        bool screenIsPressed = Touchscreen.current.press.isPressed;
         if (screenIsPressed && EventSystem.current.IsPointerOverGameObject() == false)
         {
-            float pointerScreenPosition = Touchscreen.current.primaryTouch.position.x.ReadValue();
+            float pointerScreenPosition = Touchscreen.current.position.x.ReadValue();
             if (pointerScreenPosition > Screen.width / 2)
             {
                 rotationInput = 1;

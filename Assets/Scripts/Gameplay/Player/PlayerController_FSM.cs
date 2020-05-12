@@ -27,6 +27,7 @@ public class PlayerController_FSM : MonoBehaviour
     float rotationInput;
 
     // CACHE
+    //private Rigidbody rigid;
     private Rigidbody rigid;
 
     [SerializeField] ForwardPointer directionTransform = null;
@@ -38,6 +39,7 @@ public class PlayerController_FSM : MonoBehaviour
     public LayerMask RampLayer { get { return rampLayer; } }
 
     PlayerInputTouchHandler playerInput;
+    GameLoopManager loopManager;
 
     // STATES
     public PlayerBaseState CurrentState { get; private set; }
@@ -45,6 +47,7 @@ public class PlayerController_FSM : MonoBehaviour
     public readonly PlayerRunningState RunningState = new PlayerRunningState();
     public readonly PlayerFallingState FallingState = new PlayerFallingState();
     public readonly PlayerLandedState landedState = new PlayerLandedState();
+    public readonly PlayerWaitingToPlay waitingToPlay = new PlayerWaitingToPlay();
 
     public void TransitionToState(PlayerBaseState state)
     {
@@ -57,11 +60,12 @@ public class PlayerController_FSM : MonoBehaviour
         countdownToDie = Mathf.Infinity;
         countdownToRotate = Mathf.Infinity;
 
-        CurrentState = RunningState;
+        CurrentState = waitingToPlay;
         TouchSimulation.Enable();
 
         rigid = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInputTouchHandler>();
+        loopManager = FindObjectOfType<GameLoopManager>();
     }
 
     private void Update()
@@ -117,13 +121,12 @@ public class PlayerController_FSM : MonoBehaviour
 
     public void Bounce()
     {
-        Vector3 currentVelocity = rigid.velocity;
         rigid.velocity = Vector3.zero;
 
         rigid.AddForce(Vector3.up * bounceForce, ForceMode.Impulse);
     }
 
-    // Editor only
+    // EDITOR ONLY
     public void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, 4f);

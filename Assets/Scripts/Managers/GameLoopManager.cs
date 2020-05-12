@@ -9,12 +9,6 @@ public class GameLoopManager : MonoBehaviour
     event Action onLoseGame;
     event Action onReturnToMenu;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public void RegisterOnStartGameCallback(Action callback) 
     {
         onStartGame += callback;
@@ -30,9 +24,29 @@ public class GameLoopManager : MonoBehaviour
         onStartGame();
     }
 
-    public void LoseGame()
+    public void RegisterOnLoseGameCallback(Action callback)
+    {
+        onLoseGame += callback;
+    }
+
+    public void UnregisterOnLoseGameCallback(Action callback)
+    {
+        onLoseGame -= callback;
+    }
+
+    public void PlayerDies()
     {
         onLoseGame();
+    }
+
+    public void RegisterOnReturnToMenuCallback(Action callback)
+    {
+        onReturnToMenu += callback;
+    }
+
+    public void UnregisterOnReturnToMenuCallback(Action callback)
+    {
+        onReturnToMenu -= callback;
     }
 
     public void ReturnToMenu()

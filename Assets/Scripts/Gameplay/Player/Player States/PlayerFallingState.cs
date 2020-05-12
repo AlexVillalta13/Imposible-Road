@@ -7,7 +7,6 @@ public class PlayerFallingState : PlayerBaseState
 {
     public override void EnterState(PlayerController_FSM player)
     {
-        //player.canRotate = true;
         player.countdownToDie = player.TimeToDie;
     }
     public override void Update(PlayerController_FSM player)
@@ -23,7 +22,7 @@ public class PlayerFallingState : PlayerBaseState
 
             if (player.countdownToDie <= 0f)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                player.GetComponent<PlayerGameLoopHandler>().FireDieEvent();
             }
         }
     }
