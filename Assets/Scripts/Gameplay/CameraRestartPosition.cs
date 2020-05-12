@@ -15,7 +15,7 @@ public class CameraRestartPosition : MonoBehaviour
     {
         loopManager = FindObjectOfType<GameLoopManager>();
 
-        //virtualCamera = GetComponent<CinemachineVirtualCamera>();
+        virtualCamera = GetComponent<CinemachineVirtualCamera>();
         //initialPosition = transform.position;
         //initialRotation = transform.rotation;
     }
