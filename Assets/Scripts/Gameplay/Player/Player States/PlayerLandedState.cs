@@ -33,8 +33,8 @@ public class PlayerLandedState : PlayerBaseState
         while (player.countdownToRotate < player.TimeToRotateLanded)
         {
             player.countdownToRotate += Time.deltaTime;
-            Quaternion step = Quaternion.RotateTowards(player.DirectionTransform.transform.rotation, player.landedRotation, 750f * Time.deltaTime);
-            player.DirectionTransform.SetRotation(step.eulerAngles);
+            Quaternion step = Quaternion.RotateTowards(player.ForwardPointer.transform.rotation, player.landedRotation, 750f * Time.deltaTime);
+            player.ForwardPointer.SetRotation(step.eulerAngles);
             yield return null;
         }
 

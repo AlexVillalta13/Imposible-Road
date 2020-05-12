@@ -30,8 +30,8 @@ public class PlayerController_FSM : MonoBehaviour
     //private Rigidbody rigid;
     private Rigidbody rigid;
 
-    [SerializeField] ForwardPointer directionTransform = null;
-    public ForwardPointer DirectionTransform { get { return directionTransform; } }
+    [SerializeField] ForwardPointer forwardPointer = null;
+    public ForwardPointer ForwardPointer { get { return forwardPointer; } }
 
     [SerializeField] Image fadeInDeathImage = null;
 
@@ -96,12 +96,12 @@ public class PlayerController_FSM : MonoBehaviour
 
     public void RotatePlayer()
     {
-        directionTransform.Rotate(rotationVelocity * rotationInput);
+        forwardPointer.Rotate(rotationVelocity * rotationInput);
     }
 
     public void SetVelocity()
     {
-        Vector3 velocityVector = directionTransform.transform.forward * magnitudVelocity;
+        Vector3 velocityVector = forwardPointer.transform.forward * magnitudVelocity;
         float yVelocity = rigid.velocity.y;
         if (yVelocity < -maxFallingVelocity)
         {

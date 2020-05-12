@@ -55,6 +55,7 @@ public class GameLoopStatePlayerHandler : MonoBehaviour
         player.TransitionToState(player.waitingToPlay);
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.Euler(Vector3.zero);
+        player.ForwardPointer.SetRotation(Vector3.zero);
     }
 
     public void FireDieEvent()

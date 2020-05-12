@@ -207,7 +207,7 @@ MonoBehaviour:
   canDie: 1
   bounceForce: 150
   timeToRotateLanded: 0.3
-  directionTransform: {fileID: 1354540364903056845}
+  forwardPointer: {fileID: 1354540364903056845}
   fadeInDeathImage: {fileID: 0}
   rampLayer:
     serializedVersion: 2
