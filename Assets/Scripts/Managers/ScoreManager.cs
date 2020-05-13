@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    int bestScore;
-    int runScore;
+    int bestScore = -1;
+    int runScore = -1;
 
     GameLoopManager loopManager;
 
@@ -27,6 +27,23 @@ public class ScoreManager : MonoBehaviour
         onScoreUpdated(runScore);
     }
 
+    private event Action<int> onBestScoreUpdated;
+
+    public void RegisterOnBestScoreUpdatedCallback(Action<int> callback)
+    {
+        onBestScoreUpdated += callback;
+    }
+
+    public void UnregisterOnBestScoreUpdatedCallback(Action<int> callback)
+    {
+        onBestScoreUpdated -= callback;
+    }
+
+    public void FireOnBestScoreUpdatedEvent()
+    {
+        onBestScoreUpdated(bestScore);
+    }
+
     private void Awake()
     {
         loopManager = FindObjectOfType<GameLoopManager>();
@@ -35,25 +52,29 @@ public class ScoreManager : MonoBehaviour
     private void OnEnable()
     {
         loopManager.RegisterOnStartGameCallback(ResetScore);
+        loopManager.RegisterOnLoseGameCallback(UpdateBestScore);
     }
 
     private void OnDisable()
     {
         loopManager.UnregisterOnStartGameCallback(ResetScore);
+        loopManager.UnregisterOnLoseGameCallback(UpdateBestScore);
     }
 
     private void ResetScore()
     {
         runScore = 0;
-        if(onScoreUpdated != null) 
-        {
-            onScoreUpdated(runScore);
-        }
+        UpdateRunScoreUI();
     }
 
     public void AddScore(int scoreToAdd)
     {
         runScore = scoreToAdd;
+        UpdateRunScoreUI();
+    }
+
+    private void UpdateRunScoreUI()
+    {
         if (onScoreUpdated != null)
         {
             onScoreUpdated(runScore);
@@ -65,6 +86,11 @@ public class ScoreManager : MonoBehaviour
         if(runScore > bestScore) 
         {
             bestScore = runScore;
+        }
+
+        if(onBestScoreUpdated != null)
+        {
+            onBestScoreUpdated(bestScore);
         }
     }
 }
