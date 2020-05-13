@@ -3028,6 +3028,11 @@ PrefabInstance:
       propertyPath: fadeInDeathImage
       value: 
       objectReference: {fileID: 740408062}
+    - target: {fileID: 1354540366857472432, guid: 741a6496ae694bc41a54fea501f997dc,
+        type: 3}
+      propertyPath: canDie
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1354540366857472436, guid: 741a6496ae694bc41a54fea501f997dc,
         type: 3}
       propertyPath: m_CollisionDetection
