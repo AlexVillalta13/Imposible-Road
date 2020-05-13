@@ -46,7 +46,7 @@ public class GameLoopStatePlayerHandler : MonoBehaviour
 
     public void FireStartGameEvent()
     {
-        loopManager.StartGame();
+        loopManager.FireStartGameEvent();
     }
 
     private void PlayerDies()
@@ -60,6 +60,6 @@ public class GameLoopStatePlayerHandler : MonoBehaviour
 
     public void FireDieEvent()
     {
-        loopManager.PlayerDies();
+        loopManager.FirePlayerDiesEvent();
     }
 }

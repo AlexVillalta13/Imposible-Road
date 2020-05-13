@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameLoopManager : MonoBehaviour
 {
     event Action onStartGame;
-    event Action onLoseGame;
+    event Action onPlayerDies;
     event Action onReturnToMenu;
 
     public void RegisterOnStartGameCallback(Action callback) 
@@ -19,24 +19,30 @@ public class GameLoopManager : MonoBehaviour
         onStartGame -= callback;
     }
 
-    public void StartGame()
+    public void FireStartGameEvent()
     {
-        onStartGame();
+        if(onStartGame != null)
+        {
+            onStartGame();
+        }
     }
 
     public void RegisterOnLoseGameCallback(Action callback)
     {
-        onLoseGame += callback;
+        onPlayerDies += callback;
     }
 
     public void UnregisterOnLoseGameCallback(Action callback)
     {
-        onLoseGame -= callback;
+        onPlayerDies -= callback;
     }
 
-    public void PlayerDies()
+    public void FirePlayerDiesEvent()
     {
-        onLoseGame();
+        if(onPlayerDies != null)
+        {
+            onPlayerDies();
+        }
     }
 
     public void RegisterOnReturnToMenuCallback(Action callback)
@@ -49,8 +55,11 @@ public class GameLoopManager : MonoBehaviour
         onReturnToMenu -= callback;
     }
 
-    public void ReturnToMenu()
+    public void FireReturnToMenuEvent()
     {
-        onReturnToMenu();
+        if(onReturnToMenu != null)
+        {
+            onReturnToMenu();
+        }
     }
 }

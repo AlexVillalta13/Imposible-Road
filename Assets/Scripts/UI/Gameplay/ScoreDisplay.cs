@@ -5,13 +5,26 @@ using UnityEngine;
 
 public class ScoreDisplay : MonoBehaviour
 {
+    ScoreManager scoreManager;
+
     TextMeshProUGUI scoreText;
 
     private void Awake()
     {
-        scoreText = GetComponent<TextMeshProUGUI>();
+        scoreManager = FindObjectOfType<ScoreManager>();
 
-        scoreText.text = "0";
+        scoreText = GetComponent<TextMeshProUGUI>();
+    }
+
+    private void OnEnable()
+    {
+        scoreManager.RegisterOnScoreUpdatedCallback(UpdateScoreText);
+        scoreManager.FireOnScoreUpdatedEvent();
+    }
+
+    private void OnDisable()
+    {
+        scoreManager.UnregisterOnScoreUpdatedCallback(UpdateScoreText);
     }
 
     public void UpdateScoreText(int score)

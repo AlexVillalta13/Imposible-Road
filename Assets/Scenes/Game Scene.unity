@@ -1397,6 +1397,7 @@ GameObject:
   - component: {fileID: 1208922353}
   - component: {fileID: 1208922355}
   - component: {fileID: 1208922354}
+  - component: {fileID: 1208922356}
   m_Layer: 5
   m_Name: Score Text
   m_TagString: Untagged
@@ -1542,6 +1543,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208922352}
   m_CullTransparentMesh: 0
+--- !u!114 &1208922356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208922352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53be2faba4e9da147ae8be2e97d3d432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1297434456
 GameObject:
   m_ObjectHideFlags: 0
@@ -3028,11 +3041,6 @@ PrefabInstance:
       propertyPath: fadeInDeathImage
       value: 
       objectReference: {fileID: 740408062}
-    - target: {fileID: 1354540366857472432, guid: 741a6496ae694bc41a54fea501f997dc,
-        type: 3}
-      propertyPath: canDie
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1354540366857472436, guid: 741a6496ae694bc41a54fea501f997dc,
         type: 3}
       propertyPath: m_CollisionDetection
@@ -3345,7 +3353,7 @@ PrefabInstance:
     - target: {fileID: 3891194704546815194, guid: f23471519415e584a99c2bb414b26f56,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReturnToMenu
+      value: FireReturnToMenuEvent
       objectReference: {fileID: 0}
     - target: {fileID: 3891194704546815194, guid: f23471519415e584a99c2bb414b26f56,
         type: 3}

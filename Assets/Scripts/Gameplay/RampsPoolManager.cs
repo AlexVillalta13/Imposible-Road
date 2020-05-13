@@ -134,6 +134,7 @@ public class RampsPoolManager : MonoBehaviour
             ramp.gameObject.SetActive(false);
         }
         rampsSpawned.Clear();
+        currentScoreBoxSum = 1;
 
         oldRamp = initialRamp;
         initialRamp.transform.position = initialRampPosition;
