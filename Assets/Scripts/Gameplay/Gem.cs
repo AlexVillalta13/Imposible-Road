@@ -6,13 +6,13 @@ public class Gem : MonoBehaviour
 {
     int gemsHolding = 1;
 
-    MeshRenderer mesh;
+    GameObject meshGameObject;
 
     GemsManager gemsManager;
 
     private void Awake()
     {
-        mesh = GetComponentInChildren<MeshRenderer>();
+        meshGameObject = transform.GetChild(0).gameObject;
     }
 
     public void Init(GemsManager gemsManager)
@@ -22,12 +22,12 @@ public class Gem : MonoBehaviour
 
     public void ActivateMeshGameObject()
     {
-        mesh.gameObject.SetActive(true);
+        meshGameObject.SetActive(true);
     }
 
     public void PickupGem()
     {
         gemsManager.AddGems(gemsHolding);
-        mesh.gameObject.SetActive(false);
+        meshGameObject.SetActive(false);
     }
 }
