@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Ramp : MonoBehaviour
@@ -13,22 +14,14 @@ public class Ramp : MonoBehaviour
 
     [SerializeField] List<ScoreBox> scoreBoxes = new List<ScoreBox>();
 
-    public Vector3 nextSpawnPosition
-    {
-        get
-        {
-            return nextSpawnTransform.position;
-        }
-    }
+    public Vector3 nextSpawnPosition { get { return nextSpawnTransform.position; } }
+    public Quaternion nextSpawnRotation{get { return nextSpawnTransform.rotation;} }
 
-    public Quaternion nextSpawnRotation
+    private void Awake()
     {
-        get
-        {
-            return nextSpawnTransform.rotation;
-        }
+        scoreBoxes.Clear();
+        scoreBoxes = GetComponentsInChildren<ScoreBox>().ToList();
     }
-
 
     public void Init(RampsPoolManager rampsManager, PlayerController_FSM player, ScoreManager scoreManager) 
     {

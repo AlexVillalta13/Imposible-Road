@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rampsPrefab:
-  - {fileID: 5517390058341011605, guid: 61c85b22a8e946a43b5fc0ca405e881f, type: 3}
+  - {fileID: 8209965467854745900, guid: ef8fa28d6835b4f479c1886b64632ffc, type: 3}
   - {fileID: 8209965467854745900, guid: ef8fa28d6835b4f479c1886b64632ffc, type: 3}
   - {fileID: 2923161487030543160, guid: 77f129b2a9dd0aa469e7e1e0a381b8a7, type: 3}
   - {fileID: 7416957941299181416, guid: c94ddf78084ae5149ac19064d8753bec, type: 3}
@@ -52,4 +52,4 @@ MonoBehaviour:
   - {fileID: 47683127735849743, guid: fa0853088d7713c448fe41a28301f05a, type: 3}
   - {fileID: 8073656351436648219, guid: ea0f56fed9fbce44d9b9d3c7bf42cc2d, type: 3}
   initialRamp: {fileID: 0}
-  rampsInitSpawn: 10
+  rampsInitSpawn: 20

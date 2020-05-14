@@ -85,15 +85,6 @@ public class PlayerController_FSM : MonoBehaviour
         CurrentState.OnCollisionEnter(this, collision);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        ScoreBox scoreBox = other.GetComponent<ScoreBox>();
-
-        if(scoreBox == null) { return; }
-
-        scoreBox.SumScore();
-    }
-
     public void RotatePlayer()
     {
         forwardPointer.Rotate(rotationVelocity * rotationInput);
