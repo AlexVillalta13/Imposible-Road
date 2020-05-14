@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be4c8afb68ef3e449df62bbbb1c51aa, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
-  storageConnectionString: disk://path={0}/Heaven's Road
+  storageConnectionString: disk://path={0}
   useMetaData: 1
   useCatalog: 1
-  useEncryption: 0
+  useEncryption: 1
   password: hello-world
   ecryptionAlgorithmName: aes
   serializerSettingsPreset: {fileID: 11400000, guid: e5a95b54263d53f4a937ad6fe8fa11e2,

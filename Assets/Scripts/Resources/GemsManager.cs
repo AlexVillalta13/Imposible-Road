@@ -1,4 +1,5 @@
 ﻿using Bayat.SaveSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,23 @@ public class GemsManager : MonoBehaviour
     string identifier = "OwnedGems";
     int currencyOwned = -1;
 
+    Action<int> onGemsQuantityChanged;
+
+    public void RegisterOnGemsQuantityChangedCallback(Action<int> callback)
+    {
+        onGemsQuantityChanged += callback;
+    }
+
+    public void UnregisterOnGemsQuantityChangedCallback(Action<int> callback)
+    {
+        onGemsQuantityChanged -= callback;
+    }
+
+    public void FireOnGemsQuantityChangedEvent()
+    {
+        onGemsQuantityChanged(currencyOwned);
+    }
+
     async private void Start()
     {
         if(await SaveSystemAPI.ExistsAsync(identifier) == false)
@@ -16,13 +34,16 @@ public class GemsManager : MonoBehaviour
             await SaveSystemAPI.SaveAsync(identifier, currencyOwned);
         }
         currencyOwned = await SaveSystemAPI.LoadAsync<int>(identifier);
+        onGemsQuantityChanged?.Invoke(currencyOwned);
     }
 
     public void AddGems(int amount)
     {
         currencyOwned += amount;
         SaveSystemAPI.SaveAsync(identifier, currencyOwned);
-        //UpdateUI
+        Debug.Log(currencyOwned);
+
+        onGemsQuantityChanged?.Invoke(currencyOwned);
     }
 
     public bool PaySomething(int amount)
@@ -33,6 +54,8 @@ public class GemsManager : MonoBehaviour
             return false;
         }
         currencyOwned -= amount;
+
+        onGemsQuantityChanged?.Invoke(currencyOwned);
         return true;
     }
 }

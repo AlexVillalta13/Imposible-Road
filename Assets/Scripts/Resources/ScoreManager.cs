@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour
 
     GameLoopManager loopManager;
 
-    private event Action<int> onScoreUpdated;
+    event Action<int> onScoreUpdated;
 
     public void RegisterOnScoreUpdatedCallback(Action<int> callback)
     {

@@ -21,6 +21,7 @@ public class RampsPoolManager : MonoBehaviour
     PlayerController_FSM player;
     ScoreManager scoreManager;
     GameLoopManager loopManager;
+    GemsManager gemsManager;
 
     int currentScoreBoxSum = 1;
 
@@ -29,6 +30,7 @@ public class RampsPoolManager : MonoBehaviour
         player = FindObjectOfType<PlayerController_FSM>();
         scoreManager = FindObjectOfType<ScoreManager>();
         loopManager = FindObjectOfType<GameLoopManager>();
+        gemsManager = FindObjectOfType<GemsManager>();
 
         initialRampPosition = initialRamp.transform.position;
         initialRampRotation = initialRamp.transform.rotation;
@@ -52,7 +54,7 @@ public class RampsPoolManager : MonoBehaviour
     private void InitialisePool()
     {
         oldRamp = initialRamp;
-        initialRamp.Init(this, player, scoreManager);
+        initialRamp.Init(this, player, scoreManager, gemsManager);
 
 
         for (int i = 0; i < rampsPrefab.Count; i++)
@@ -60,7 +62,7 @@ public class RampsPoolManager : MonoBehaviour
             rampsToInstantiateList.Add(Instantiate(rampsPrefab[i], transform));
             rampsPool.Add(rampsToInstantiateList[i]);
             rampsToInstantiateList[i].gameObject.SetActive(false);
-            rampsToInstantiateList[i].Init(this, player, scoreManager);
+            rampsToInstantiateList[i].Init(this, player, scoreManager, gemsManager);
         }
 
         InstantiateFirstRamps();
@@ -98,14 +100,14 @@ public class RampsPoolManager : MonoBehaviour
             rampsSpawned.Add(newRamp);
 
             newRamp.gameObject.SetActive(true);
-            newRamp.ActivateScoreBoxes(ref currentScoreBoxSum);
+            newRamp.ReactivateRampItems(ref currentScoreBoxSum);
         }
         else
         {
             int i = rampsToInstantiateList.IndexOf(rampToSpawn);
             newRamp = Instantiate(rampsToInstantiateList[i], transform);
-            newRamp.Init(this, player, scoreManager);
-            newRamp.ActivateScoreBoxes(ref currentScoreBoxSum);
+            newRamp.Init(this, player, scoreManager, gemsManager);
+            newRamp.ReactivateRampItems(ref currentScoreBoxSum);
 
             rampsSpawned.Add(newRamp);
         }

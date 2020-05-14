@@ -24,18 +24,29 @@ public class Ramp : MonoBehaviour
         gems = GetComponentsInChildren<Gem>().ToList();
     }
 
-    public void Init(RampsPoolManager rampsManager, PlayerController_FSM player, ScoreManager scoreManager) 
+    public void Init(RampsPoolManager rampsManager, PlayerController_FSM player, ScoreManager scoreManager, GemsManager gemsManager) 
     {
         this.rampsManager = rampsManager;
         this.player = player;
 
-        foreach(ScoreBox scoreBox in scoreBoxes)
+        if (scoreBoxes != null)
         {
-            scoreBox.Init(scoreManager);
+            foreach (ScoreBox scoreBox in scoreBoxes)
+            {
+                scoreBox.Init(scoreManager);
+            }
+        }
+
+        if (gems != null)
+        {
+            foreach (Gem gem in gems)
+            {
+                gem.Init(gemsManager);
+            }
         }
     }
 
-    public void ActivateScoreBoxes(ref int currentScoreBoxSum)
+    public void ReactivateRampItems(ref int currentScoreBoxSum)
     {
         if (scoreBoxes != null)
         {
@@ -43,6 +54,14 @@ public class Ramp : MonoBehaviour
             {
                 scoreBox.UpdateHoldingScore(currentScoreBoxSum);
                 currentScoreBoxSum++;
+            }
+        }
+
+        if(gems != null) 
+        {
+            foreach (Gem gem in gems)
+            {
+                gem.ActivateMeshGameObject();
             }
         }
     }
