@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Bayat.SaveSystem;
+using Bayat.SaveSystem.Storage;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    string identifier = "ScoreManager.txt";
+
     int bestScore = -1;
     int runScore = -1;
 
@@ -61,6 +65,17 @@ public class ScoreManager : MonoBehaviour
         loopManager.UnregisterOnLoseGameCallback(UpdateBestScore);
     }
 
+    async private void Start()
+    {
+        
+        if (await SaveSystemAPI.ExistsAsync(identifier) == false)
+        {
+            return;
+        }
+        int loadedScore = await SaveSystemAPI.LoadAsync<int>(identifier);
+        bestScore = loadedScore;
+    }
+
     private void ResetScore()
     {
         runScore = 0;
@@ -92,5 +107,8 @@ public class ScoreManager : MonoBehaviour
         {
             onBestScoreUpdated(bestScore);
         }
+
+        SaveSystemAPI.SaveAsync(identifier, bestScore);
+        
     }
 }
