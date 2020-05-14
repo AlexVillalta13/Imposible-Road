@@ -12,15 +12,16 @@ public class Ramp : MonoBehaviour
     PlayerController_FSM player = null;
     RampsPoolManager rampsManager = null;
 
-    [SerializeField] List<ScoreBox> scoreBoxes = new List<ScoreBox>();
+    List<ScoreBox> scoreBoxes = new List<ScoreBox>();
+    List<Gem> gems = new List<Gem>();
 
     public Vector3 nextSpawnPosition { get { return nextSpawnTransform.position; } }
     public Quaternion nextSpawnRotation{get { return nextSpawnTransform.rotation;} }
 
     private void Awake()
     {
-        scoreBoxes.Clear();
         scoreBoxes = GetComponentsInChildren<ScoreBox>().ToList();
+        gems = GetComponentsInChildren<Gem>().ToList();
     }
 
     public void Init(RampsPoolManager rampsManager, PlayerController_FSM player, ScoreManager scoreManager) 
