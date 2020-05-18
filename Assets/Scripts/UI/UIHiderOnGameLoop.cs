@@ -23,6 +23,7 @@ public class UIHiderOnGameLoop : MonoBehaviour
     {
         gameplayUIHandler.Enable(false);
         scoreScreenHandler.Enable(false);
+        mainMenuHandler.Enable(true);
     }
 
     private void OnEnable()

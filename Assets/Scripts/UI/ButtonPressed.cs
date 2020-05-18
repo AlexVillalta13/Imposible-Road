@@ -18,11 +18,11 @@ public class ButtonPressed : MonoBehaviour
 
     public void MoveDownImageWhenPressed()
     {
-        giftImageRectTransform.sizeDelta = new Vector2(200, height - tenPercentageToAdd);
+        giftImageRectTransform.sizeDelta = new Vector2(giftImageRectTransform.rect.width, height - tenPercentageToAdd);
     }
 
     public void MoveUpImageWhenPressed()
     {
-        giftImageRectTransform.sizeDelta = new Vector2(200, height);
+        giftImageRectTransform.sizeDelta = new Vector2(giftImageRectTransform.rect.width, height);
     }
 }
