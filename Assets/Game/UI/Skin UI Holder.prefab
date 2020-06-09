@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1817232953639510796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188365412020445216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7896268adb445e648b463e8f5570fa50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonStatus: 0
 --- !u!1 &8925668015222236430
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,6 +74,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -85,6 +99,7 @@ GameObject:
   - component: {fileID: 8925668016286473062}
   - component: {fileID: 8925668016286473080}
   - component: {fileID: 8925668016286473081}
+  - component: {fileID: 1274812550004931972}
   m_Layer: 5
   m_Name: Skin UI Holder
   m_TagString: Untagged
@@ -136,6 +151,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.42352945, b: 0.58431375, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -149,6 +165,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1274812550004931972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8925668016286473063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcd8a2bc15a60634c8f4d0f1705f25c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinID: 
+  skinPreviewImage: {fileID: 8925668016535660915}
+  SkinEquipButton: {fileID: 1817232953639510796}
 --- !u!1 &8925668016535660913
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +240,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -282,6 +314,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -512,6 +545,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f23471519415e584a99c2bb414b26f56, type: 3}
+--- !u!1 &188365412020445216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3891194704546815188, guid: f23471519415e584a99c2bb414b26f56,
+    type: 3}
+  m_PrefabInstance: {fileID: 3791320256980860148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &188365412020445217 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3891194704546815189, guid: f23471519415e584a99c2bb414b26f56,

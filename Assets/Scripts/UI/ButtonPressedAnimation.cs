@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ButtonPressed : MonoBehaviour
+public class ButtonPressedAnimation : MonoBehaviour
 {
     [SerializeField] RectTransform giftImageRectTransform = null;
     float height;
