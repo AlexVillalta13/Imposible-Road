@@ -1,29 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIHiderOnGameLoop : MonoBehaviour
 {
     GameLoopManager gameLoopManager;
 
-    MainMenuHandler mainMenuHandler;
-    GameplayUIHandler gameplayUIHandler;
-    ScoreScreenHandler scoreScreenHandler;
+    [SerializeField] Transform mainMenu = null;
+    [SerializeField] Transform gameplayUI = null;
+    [SerializeField] Transform scoreScreen = null;
+    [SerializeField] Transform skinShop = null;
 
     private void Awake()
     {
         gameLoopManager = FindObjectOfType<GameLoopManager>();
-
-        mainMenuHandler = GetComponentInChildren<MainMenuHandler>();
-        gameplayUIHandler = GetComponentInChildren<GameplayUIHandler>();
-        scoreScreenHandler = GetComponentInChildren<ScoreScreenHandler>();
     }
 
     private void Start()
     {
-        gameplayUIHandler.Enable(false);
-        scoreScreenHandler.Enable(false);
-        mainMenuHandler.Enable(true);
+        DisableUI(gameplayUI);
+        DisableUI(scoreScreen);
+        EnableUI(mainMenu);
+        DisableUI(skinShop);
     }
 
     private void OnEnable()
@@ -42,19 +41,36 @@ public class UIHiderOnGameLoop : MonoBehaviour
 
     private void GameStarts()
     {
-        mainMenuHandler.Enable(false);
-        gameplayUIHandler.Enable(true);
+        DisableUI(mainMenu);
+        EnableUI(gameplayUI);
     }
 
     private void EnterScoreScreen()
     {
-        gameplayUIHandler.Enable(false);
-        scoreScreenHandler.Enable(true);
+        DisableUI(gameplayUI);
+        EnableUI(scoreScreen);
     }
 
     private void EnterMainMenu()
     {
-        mainMenuHandler.Enable(true);
-        scoreScreenHandler.Enable(false);
+        EnableUI(mainMenu);
+        DisableUI(skinShop);
+        DisableUI(scoreScreen);
+    }
+
+    public void EnableUI(Transform UItransform)
+    {
+        foreach(Transform transform in UItransform)
+        {
+            transform.gameObject.SetActive(true);
+        }
+    }
+
+    public void DisableUI(Transform UItransform)
+    {
+        foreach (Transform transform in UItransform)
+        {
+            transform.gameObject.SetActive(false);
+        }
     }
 }
