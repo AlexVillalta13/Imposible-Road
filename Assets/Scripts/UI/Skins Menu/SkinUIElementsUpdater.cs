@@ -25,6 +25,13 @@ public class SkinUIElementsUpdater : MonoBehaviour
     private void OnEnable()
     {
         UpdateUIElements();
+
+        skinSystem.OnSkinStatusChanged += UpdateUIElements;
+    }
+
+    private void OnDisable()
+    {
+        skinSystem.OnSkinStatusChanged -= UpdateUIElements;
     }
 
     private void CreateUIElements()
@@ -33,9 +40,7 @@ public class SkinUIElementsUpdater : MonoBehaviour
         {
             SkinUIElement UIElement = Instantiate(skinUIElementPrefab, gameObject.transform);
             UIElementsList.Add(UIElement);
-            UIElement.skinID = skin.uniqueID;
-            UIElement.skinName = skin.skinName;
-            UIElement.SetUISkin(skin.skinPreviewSprite);
+            UIElement.Init(skin.uniqueID, skin.skinName, skin.skinPreviewSprite, skinSystem);
         }
     }
 

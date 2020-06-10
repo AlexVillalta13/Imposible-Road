@@ -15,6 +15,16 @@ public class SkinUIElement : MonoBehaviour
     [SerializeField] Image skinPreviewImage;
     [SerializeField] SkinEquipButton SkinEquipButton;
 
+    SkinSystem skinSystem;
+
+    public void Init(string skinID, string skinName, Sprite skinPreviewSprite, SkinSystem skinSystem)
+    {
+        this.skinID = skinID;
+        this.skinName = skinName;
+        skinPreviewImage.sprite = skinPreviewSprite;
+        this.skinSystem = skinSystem;
+    }
+
     public void SetUISkin(Sprite skinPreviewSprite)
     {
         skinPreviewImage.sprite = skinPreviewSprite;
@@ -36,6 +46,11 @@ public class SkinUIElement : MonoBehaviour
             //return;
         }
         SkinEquipButton.UpdateStatus(buttonStatus);
+    }
+
+    public void EquipSkin()
+    {
+        skinSystem.EquipSkin(skinID);
     }
 }
 

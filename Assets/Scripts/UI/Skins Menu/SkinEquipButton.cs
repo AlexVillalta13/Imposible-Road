@@ -11,10 +11,6 @@ public class SkinEquipButton : MonoBehaviour
 
     public void UpdateStatus(SkinButtonStatus status)
     {
-        //notOwnedSkinButton.SetActive(false);
-        //unequippedSkinButton.SetActive(false);
-
-        //equippedSkinButton.SetActive(false);
         foreach (Transform child in transform)
         {
             child.gameObject.SetActive(false);

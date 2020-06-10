@@ -25,12 +25,16 @@ public class SkinSystem : MonoBehaviour
 
         skinStatusDictionary[skinToEquip].equiped = true;
 
+        OnSkinStatusChanged();
+
         // TODO Change player material
     }
 
     public void BuySkin(string skinToBuyID)
     {
         skinStatusDictionary[skinToBuyID].owned = true;
+
+        OnSkinStatusChanged();
     }
 
     public void GetNotOwnedSkins()
@@ -64,6 +68,7 @@ public class SkinSystem : MonoBehaviour
 
 public class SkinStatus
 {
-    public bool owned = false;
+    // TODO change to false
+    public bool owned = true;
     public bool equiped = false;
 }
