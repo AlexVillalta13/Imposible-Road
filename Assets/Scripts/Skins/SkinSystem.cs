@@ -10,6 +10,7 @@ public class SkinSystem : MonoBehaviour
     protected Dictionary<string, SkinStatus> skinStatusDictionary;
 
     public event Action OnSkinStatusChanged;
+    public event Action<Material> OnSkinEquipped;
 
     private void Awake()
     {
@@ -27,7 +28,8 @@ public class SkinSystem : MonoBehaviour
 
         OnSkinStatusChanged();
 
-        // TODO Change player material
+        Material materialToEquip = skinsScriptableObject.GetSkin(skinToEquip).materialSkin;
+        OnSkinEquipped(materialToEquip);
     }
 
     public void BuySkin(string skinToBuyID)

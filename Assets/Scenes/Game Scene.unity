@@ -5671,7 +5671,7 @@ PrefabInstance:
     - target: {fileID: 3891194704546815195, guid: f23471519415e584a99c2bb414b26f56,
         type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
-      value: 2.5
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f23471519415e584a99c2bb414b26f56, type: 3}
@@ -6731,7 +6731,7 @@ PrefabInstance:
     - target: {fileID: 5934848774439951608, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000058058513
+      value: 0.000005805851
       objectReference: {fileID: 0}
     - target: {fileID: 5934848774439951608, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
@@ -6766,7 +6766,7 @@ PrefabInstance:
     - target: {fileID: 5934848775931850947, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000058058513
+      value: 0.000005805851
       objectReference: {fileID: 0}
     - target: {fileID: 5934848775931850947, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}

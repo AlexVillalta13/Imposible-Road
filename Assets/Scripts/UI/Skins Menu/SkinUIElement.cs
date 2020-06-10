@@ -35,15 +35,14 @@ public class SkinUIElement : MonoBehaviour
         if(skinStatus.equiped == true)
         {
             buttonStatus = SkinButtonStatus.Equipped;
-            //return;
-        } else if(skinStatus.owned == true && skinStatus.equiped == false)
+        } 
+        else if(skinStatus.owned == true && skinStatus.equiped == false)
         {
             buttonStatus = SkinButtonStatus.Unequiped;
-            //return;
-        } else if (skinStatus.owned == false)
+        } 
+        else if (skinStatus.owned == false)
         {
             buttonStatus = SkinButtonStatus.NotOwned;
-            //return;
         }
         SkinEquipButton.UpdateStatus(buttonStatus);
     }
