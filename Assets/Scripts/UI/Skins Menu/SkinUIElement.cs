@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum SkinButtonStatus { NotOwned, Unequiped, Equipped }
+
 public class SkinUIElement : MonoBehaviour
 {
     public string skinID;
+    public string skinName;
+
+    public SkinButtonStatus buttonStatus;
 
     [SerializeField] Image skinPreviewImage;
     [SerializeField] SkinEquipButton SkinEquipButton;
@@ -19,16 +24,19 @@ public class SkinUIElement : MonoBehaviour
     {
         if(skinStatus.equiped == true)
         {
-            SkinEquipButton.UpdateStatus(SkinEquipButton.Status.Equipped);
-            return;
+            buttonStatus = SkinButtonStatus.Equipped;
+            //return;
         } else if(skinStatus.owned == true && skinStatus.equiped == false)
         {
-            SkinEquipButton.UpdateStatus(SkinEquipButton.Status.Unequiped);
-            return;
+            buttonStatus = SkinButtonStatus.Unequiped;
+            //return;
         } else if (skinStatus.owned == false)
         {
-            SkinEquipButton.UpdateStatus(SkinEquipButton.Status.NotOwned);
-            return;
+            buttonStatus = SkinButtonStatus.NotOwned;
+            //return;
         }
+        SkinEquipButton.UpdateStatus(buttonStatus);
     }
 }
+
+

@@ -4,23 +4,32 @@ using UnityEngine;
 
 public class SkinEquipButton : MonoBehaviour
 {
-    public enum Status { NotOwned, Unequiped, Equipped}
+    [SerializeField] GameObject notOwnedSkinButton = null;
+    [SerializeField] GameObject unequippedSkinButton = null;
+    [SerializeField] GameObject equippedSkinButton = null;
 
-    public Status buttonStatus;
 
-    public void UpdateStatus(Status status)
+    public void UpdateStatus(SkinButtonStatus status)
     {
-        buttonStatus = status;
-        switch(status)
+        //notOwnedSkinButton.SetActive(false);
+        //unequippedSkinButton.SetActive(false);
+
+        //equippedSkinButton.SetActive(false);
+        foreach (Transform child in transform)
         {
-            case Status.Equipped:
-                // Equipped
+            child.gameObject.SetActive(false);
+        }
+
+        switch (status)
+        {
+            case SkinButtonStatus.Equipped:
+                equippedSkinButton.SetActive(true);
                 break;
-            case Status.Unequiped:
-                // Unequiped
+            case SkinButtonStatus.Unequiped:
+                unequippedSkinButton.SetActive(true);
                 break;
-            case Status.NotOwned:
-                // Not Owned
+            case SkinButtonStatus.NotOwned:
+                notOwnedSkinButton.SetActive(true);
                 break;
         }
     }

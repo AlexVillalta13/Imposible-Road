@@ -34,6 +34,7 @@ public class SkinUIElementsUpdater : MonoBehaviour
             SkinUIElement UIElement = Instantiate(skinUIElementPrefab, gameObject.transform);
             UIElementsList.Add(UIElement);
             UIElement.skinID = skin.uniqueID;
+            UIElement.skinName = skin.skinName;
             UIElement.SetUISkin(skin.skinPreviewSprite);
         }
     }
