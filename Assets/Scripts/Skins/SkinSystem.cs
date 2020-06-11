@@ -26,10 +26,10 @@ public class SkinSystem : MonoBehaviour
 
         skinStatusDictionary[skinToEquip].equiped = true;
 
-        OnSkinStatusChanged();
+        OnSkinStatusChanged?.Invoke();
 
         Material materialToEquip = skinsScriptableObject.GetSkin(skinToEquip).materialSkin;
-        OnSkinEquipped(materialToEquip);
+        OnSkinEquipped?.Invoke(materialToEquip);
     }
 
     public void BuySkin(string skinToBuyID)
@@ -39,7 +39,7 @@ public class SkinSystem : MonoBehaviour
         EquipSkin(skinToBuyID);
     }
 
-    public void GetNotOwnedSkins()
+    public string GetRandomNotOwnedSkins()
     {
         List<SkinStatus> skinsNotOwned = new List<SkinStatus>();
         foreach(SkinStatus skinStatus in skinStatusDictionary.Values)
@@ -49,9 +49,10 @@ public class SkinSystem : MonoBehaviour
                 skinsNotOwned.Add(skinStatus);
             }
         }
-        int randomNumber = UnityEngine.Random.Range(0, skinsNotOwned.Count - 1);
+        int randomNumber = UnityEngine.Random.Range(0, skinsNotOwned.Count);
+        Debug.Log("Random number: " + randomNumber + " Skins count: " + skinsNotOwned.Count);
         SkinStatus randomSkinStatus = skinsNotOwned[randomNumber];
-        BuySkin(randomSkinStatus.skinID);
+        return randomSkinStatus.skinID;
     }
 
     private void BuildSkinStatusTable()
@@ -83,7 +84,7 @@ public class SkinSystem : MonoBehaviour
 public class SkinStatus
 {
     public string skinID;
-    // TODO change to false
-    public bool owned = true;
+    
+    public bool owned = false;
     public bool equiped = false;
 }

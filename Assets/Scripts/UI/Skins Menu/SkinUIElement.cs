@@ -12,8 +12,8 @@ public class SkinUIElement : MonoBehaviour
 
     public SkinButtonStatus buttonStatus;
 
-    [SerializeField] Image skinPreviewImage;
-    [SerializeField] SkinEquipButton SkinEquipButton;
+    [SerializeField] Image skinPreviewImage = null;
+    [SerializeField] SkinEquipButton SkinEquipButton = null;
 
     SkinSystem skinSystem;
 
