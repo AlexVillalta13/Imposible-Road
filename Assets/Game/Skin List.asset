@@ -28,3 +28,18 @@ MonoBehaviour:
     skinPreviewSprite: {fileID: 21300000, guid: 6bad5928f954bad4ba263f2b99f7eb3e,
       type: 3}
     materialSkin: {fileID: 2100000, guid: 56610a7c150055c49a2fcff205698610, type: 2}
+  - skinName: Light Blue
+    uniqueID: 5e7422b9-589e-413b-823d-d1e500145d34
+    skinPreviewSprite: {fileID: 21300000, guid: 6cd98d160804dd441b0d478b7749a652,
+      type: 3}
+    materialSkin: {fileID: 2100000, guid: 0da79f342915eee459df597fcef8a829, type: 2}
+  - skinName: Red Black
+    uniqueID: 0c9face7-5e5b-4ae1-a187-65143d3e1534
+    skinPreviewSprite: {fileID: 21300000, guid: 07adc2a1dcef5e94eb64999debd1a0e9,
+      type: 3}
+    materialSkin: {fileID: 2100000, guid: 73989519741cd2c40bf9b8f72cd2c440, type: 2}
+  - skinName: Purple
+    uniqueID: de0ff56a-f117-4548-a4c3-b005d1072ae2
+    skinPreviewSprite: {fileID: 21300000, guid: bf7861bdc555a14498e8af6e75c4d827,
+      type: 3}
+    materialSkin: {fileID: 2100000, guid: 8cd921bcd79fe1342b7d74c39bf20ad5, type: 2}

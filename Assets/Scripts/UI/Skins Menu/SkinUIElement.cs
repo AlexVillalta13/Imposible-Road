@@ -49,7 +49,7 @@ public class SkinUIElement : MonoBehaviour
 
     public void EquipSkin()
     {
-        skinSystem.EquipSkin(skinID);
+        skinSystem.ChangeEquipSkinStatus(skinID);
     }
 }
 

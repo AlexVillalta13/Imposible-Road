@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Bayat.SaveSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class SkinSystem : MonoBehaviour
 {
+    string identifier = "Skin System";
+
     [SerializeField] SkinsScriptableObject skinsScriptableObject = null;
 
     protected Dictionary<string, SkinStatus> skinStatusDictionary;
@@ -12,12 +16,31 @@ public class SkinSystem : MonoBehaviour
     public event Action OnSkinStatusChanged;
     public event Action<Material> OnSkinEquipped;
 
-    private void Awake()
+    async private void Start()
     {
-        BuildSkinStatusTable();
+        if (await SaveSystemAPI.ExistsAsync(identifier) == false)
+        {
+            BuildSkinStatusTable();
+            await SaveSystemAPI.SaveAsync(identifier, skinStatusDictionary);
+            return;
+        }
+
+        await LoadSkinData();
     }
 
-    public void EquipSkin(string skinToEquip)
+    private async Task LoadSkinData()
+    {
+        BuildSkinStatusTable();
+        Dictionary<string, SkinStatus> loadedSkinStatus = await SaveSystemAPI.LoadAsync<Dictionary<string, SkinStatus>>(identifier);
+        foreach (string key in loadedSkinStatus.Keys)
+        {
+            skinStatusDictionary[key] = loadedSkinStatus[key];
+        }
+        OnSkinStatusChanged?.Invoke();
+        SearchForEquippedSkin();
+    }
+
+    public void ChangeEquipSkinStatus(string skinToEquip)
     {
         foreach (SkinStatus skinStatus in skinStatusDictionary.Values)
         {
@@ -25,9 +48,27 @@ public class SkinSystem : MonoBehaviour
         }
 
         skinStatusDictionary[skinToEquip].equiped = true;
+        SaveSystemAPI.SaveAsync(identifier, skinStatusDictionary);
 
         OnSkinStatusChanged?.Invoke();
 
+        EquipSkin(skinToEquip);
+    }
+
+    private void SearchForEquippedSkin()
+    {
+        foreach(SkinStatus skinStatus in skinStatusDictionary.Values)
+        {
+            if(skinStatus.equiped == true)
+            {
+                string skinID = skinStatus.skinID;
+                EquipSkin(skinID);
+            }
+        }
+    }
+
+    private void EquipSkin(string skinToEquip)
+    {
         Material materialToEquip = skinsScriptableObject.GetSkin(skinToEquip).materialSkin;
         OnSkinEquipped?.Invoke(materialToEquip);
     }
@@ -35,8 +76,9 @@ public class SkinSystem : MonoBehaviour
     public void BuySkin(string skinToBuyID)
     {
         skinStatusDictionary[skinToBuyID].owned = true;
+        //SaveSystemAPI.SaveAsync(identifier, skinStatusDictionary);
 
-        EquipSkin(skinToBuyID);
+        ChangeEquipSkinStatus(skinToBuyID);
     }
 
     public string GetRandomNotOwnedSkins()
