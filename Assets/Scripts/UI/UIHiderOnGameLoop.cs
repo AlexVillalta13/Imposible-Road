@@ -11,6 +11,8 @@ public class UIHiderOnGameLoop : MonoBehaviour
     [SerializeField] Transform gameplayUI = null;
     [SerializeField] Transform scoreScreen = null;
     [SerializeField] Transform skinShop = null;
+    [SerializeField] Transform skinAcquiredUI = null;
+    [SerializeField] Transform openBoxScreen = null;
 
     private void Awake()
     {
@@ -23,6 +25,8 @@ public class UIHiderOnGameLoop : MonoBehaviour
         DisableUI(scoreScreen);
         EnableUI(mainMenu);
         DisableUI(skinShop);
+        DisableUI(skinAcquiredUI);
+        DisableUI(openBoxScreen);
     }
 
     private void OnEnable()
