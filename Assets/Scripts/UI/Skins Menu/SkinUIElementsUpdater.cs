@@ -13,20 +13,30 @@ public class SkinUIElementsUpdater : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Awake");
+
         skinSystem = FindObjectOfType<SkinSystem>();
-        skins = skinSystem.GetSkinsScriptableObject();
+        //skins = skinSystem.GetSkinsScriptableObject();
+        CreateUIElements();
+        UpdateUIElements();
     }
 
     private void Start()
     {
-        CreateUIElements();
+        Debug.Log("Started");
+
+        //CreateUIElements();
+        //UpdateUIElements();
     }
 
     private void OnEnable()
     {
-        UpdateUIElements();
+        Debug.Log("Enabled");
 
+        UpdateUIElements();
         skinSystem.OnSkinStatusChanged += UpdateUIElements;
+
+        
     }
 
     private void OnDisable()
@@ -36,7 +46,8 @@ public class SkinUIElementsUpdater : MonoBehaviour
 
     private void CreateUIElements()
     {
-        foreach(Skin skin in skins.GetSkinList())
+        Debug.Log("CreateUIElements");
+        foreach (Skin skin in skinSystem.GetSkinsScriptableObject().GetSkinList())
         {
             SkinUIElement UIElement = Instantiate(skinUIElementPrefab, gameObject.transform);
             UIElementsList.Add(UIElement);
@@ -46,9 +57,18 @@ public class SkinUIElementsUpdater : MonoBehaviour
 
     private void UpdateUIElements()
     {
-        foreach(SkinUIElement UIElement in UIElementsList)
+        Debug.Log("UpdateUIElements: " + UIElementsList.Count);
+
+        foreach (SkinUIElement UIElement in UIElementsList)
         {
-            SkinStatus skinStatus = skinSystem.GetSkinStatusDictionary()[UIElement.skinID];
+            SkinStatus skinStatus;
+
+            string ID = UIElement.skinID;
+
+            var dictionary = skinSystem.GetSkinStatusDictionary();
+
+            skinStatus = dictionary[ID];
+
             UIElement.UpdateStatus(skinStatus);
         }
     }

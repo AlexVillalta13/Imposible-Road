@@ -16,11 +16,17 @@ public class SkinSystem : MonoBehaviour
     public event Action OnSkinStatusChanged;
     public event Action<Material> OnSkinEquipped;
 
+    private void Awake()
+    {
+        BuildSkinStatusTable();
+    }
+
+
     async private void Start()
     {
         if (await SaveSystemAPI.ExistsAsync(identifier) == false)
         {
-            BuildSkinStatusTable();
+            //BuildSkinStatusTable();
             await SaveSystemAPI.SaveAsync(identifier, skinStatusDictionary);
             return;
         }
@@ -30,7 +36,7 @@ public class SkinSystem : MonoBehaviour
 
     private async Task LoadSkinData()
     {
-        BuildSkinStatusTable();
+        //BuildSkinStatusTable();
         Dictionary<string, SkinStatus> loadedSkinStatus = await SaveSystemAPI.LoadAsync<Dictionary<string, SkinStatus>>(identifier);
         foreach (string key in loadedSkinStatus.Keys)
         {
@@ -76,7 +82,6 @@ public class SkinSystem : MonoBehaviour
     public void BuySkin(string skinToBuyID)
     {
         skinStatusDictionary[skinToBuyID].owned = true;
-        //SaveSystemAPI.SaveAsync(identifier, skinStatusDictionary);
 
         ChangeEquipSkinStatus(skinToBuyID);
     }
