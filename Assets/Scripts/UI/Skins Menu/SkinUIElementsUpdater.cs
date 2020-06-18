@@ -7,36 +7,19 @@ public class SkinUIElementsUpdater : MonoBehaviour
     [SerializeField] SkinUIElement skinUIElementPrefab = null;
 
     SkinSystem skinSystem = null;
-    SkinsScriptableObject skins = null;
 
     List<SkinUIElement> UIElementsList = new List<SkinUIElement>();
 
     private void Awake()
     {
-        Debug.Log("Awake");
-
         skinSystem = FindObjectOfType<SkinSystem>();
-        //skins = skinSystem.GetSkinsScriptableObject();
         CreateUIElements();
-        UpdateUIElements();
-    }
-
-    private void Start()
-    {
-        Debug.Log("Started");
-
-        //CreateUIElements();
-        //UpdateUIElements();
     }
 
     private void OnEnable()
     {
-        Debug.Log("Enabled");
-
         UpdateUIElements();
         skinSystem.OnSkinStatusChanged += UpdateUIElements;
-
-        
     }
 
     private void OnDisable()
@@ -46,7 +29,6 @@ public class SkinUIElementsUpdater : MonoBehaviour
 
     private void CreateUIElements()
     {
-        Debug.Log("CreateUIElements");
         foreach (Skin skin in skinSystem.GetSkinsScriptableObject().GetSkinList())
         {
             SkinUIElement UIElement = Instantiate(skinUIElementPrefab, gameObject.transform);
@@ -57,8 +39,6 @@ public class SkinUIElementsUpdater : MonoBehaviour
 
     private void UpdateUIElements()
     {
-        Debug.Log("UpdateUIElements: " + UIElementsList.Count);
-
         foreach (SkinUIElement UIElement in UIElementsList)
         {
             SkinStatus skinStatus;

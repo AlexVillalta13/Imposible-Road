@@ -16,14 +16,10 @@ public class GemsDisplay : MonoBehaviour
         gemsManager = FindObjectOfType<GemsManager>();
     }
 
-    private void Start()
-    {
-        gemsManager.FireOnGemsQuantityChangedEvent();
-    }
-
     private void OnEnable()
     {
         gemsManager.RegisterOnGemsQuantityChangedCallback(UpdateGemsText);
+        gemsManager.FireOnGemsQuantityChangedEvent();
     }
 
     private void OnDisable()

@@ -32,11 +32,11 @@ public class SkinUIElement : MonoBehaviour
 
     public void UpdateStatus(SkinStatus skinStatus)
     {
-        if(skinStatus.equiped == true)
+        if(skinStatus.equipped == true)
         {
             buttonStatus = SkinButtonStatus.Equipped;
         } 
-        else if(skinStatus.owned == true && skinStatus.equiped == false)
+        else if(skinStatus.owned == true && skinStatus.equipped == false)
         {
             buttonStatus = SkinButtonStatus.Unequiped;
         } 

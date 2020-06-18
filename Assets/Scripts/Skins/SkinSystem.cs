@@ -42,18 +42,18 @@ public class SkinSystem : MonoBehaviour
         {
             skinStatusDictionary[key] = loadedSkinStatus[key];
         }
-        OnSkinStatusChanged?.Invoke();
-        SearchForEquippedSkin();
+
+        ChangeEquipSkinStatus(SearchForEquippedSkin());
     }
 
     public void ChangeEquipSkinStatus(string skinToEquip)
     {
         foreach (SkinStatus skinStatus in skinStatusDictionary.Values)
         {
-            skinStatus.equiped = false;
+            skinStatus.equipped = false;
         }
 
-        skinStatusDictionary[skinToEquip].equiped = true;
+        skinStatusDictionary[skinToEquip].equipped = true;
         SaveSystemAPI.SaveAsync(identifier, skinStatusDictionary);
 
         OnSkinStatusChanged?.Invoke();
@@ -61,16 +61,17 @@ public class SkinSystem : MonoBehaviour
         EquipSkin(skinToEquip);
     }
 
-    private void SearchForEquippedSkin()
+    private string SearchForEquippedSkin()
     {
         foreach(SkinStatus skinStatus in skinStatusDictionary.Values)
         {
-            if(skinStatus.equiped == true)
+            if(skinStatus.equipped == true)
             {
-                string skinID = skinStatus.skinID;
-                EquipSkin(skinID);
+                return skinStatus.skinID;
             }
         }
+        Debug.LogError("SearchForEquippedSkin() haven't found any equipped skin");
+        return null;
     }
 
     private void EquipSkin(string skinToEquip)
@@ -114,7 +115,7 @@ public class SkinSystem : MonoBehaviour
             skinStatusDictionary.Add(skin.uniqueID, newSkinStatus);
         }
         skinStatusDictionary[skinsScriptableObject.GetSkinList()[0].uniqueID].owned = true;
-        skinStatusDictionary[skinsScriptableObject.GetSkinList()[0].uniqueID].equiped = true;
+        skinStatusDictionary[skinsScriptableObject.GetSkinList()[0].uniqueID].equipped = true;
     }
 
     public SkinsScriptableObject GetSkinsScriptableObject()
@@ -133,5 +134,5 @@ public class SkinStatus
     public string skinID;
     
     public bool owned = false;
-    public bool equiped = false;
+    public bool equipped = false;
 }
