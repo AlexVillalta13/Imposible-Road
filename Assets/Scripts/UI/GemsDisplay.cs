@@ -29,6 +29,6 @@ public class GemsDisplay : MonoBehaviour
 
     private void UpdateGemsText(int gemsOwned)
     {
-        text.text = gemsOwned + " <sprite=\"diamond\" index=0 tint=1>";
+        text.text = gemsOwned + " <sprite=\"Diamond\" index=0 tint=1>";
     }
 }
