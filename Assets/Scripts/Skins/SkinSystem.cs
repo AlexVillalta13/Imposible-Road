@@ -98,9 +98,25 @@ public class SkinSystem : MonoBehaviour
             }
         }
         int randomNumber = UnityEngine.Random.Range(0, skinsNotOwned.Count);
-        Debug.Log("Random number: " + randomNumber + " Skins count: " + skinsNotOwned.Count);
+        if(skinsNotOwned.Count == 0)
+        {
+            return null;
+        }
         SkinStatus randomSkinStatus = skinsNotOwned[randomNumber];
         return randomSkinStatus.skinID;
+    }
+
+    public int GetNotOwnedSkinCount()
+    {
+        int count = 0;
+        foreach(SkinStatus skinStatus in skinStatusDictionary.Values)
+        {
+            if(skinStatus.owned == false)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 
     private void BuildSkinStatusTable()

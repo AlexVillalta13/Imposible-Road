@@ -17,6 +17,10 @@ public class SkinAquiredUI : MonoBehaviour
     public void SetupSkinAcquiredUI()
     {
         string skinsToGet = skinSystem.GetRandomNotOwnedSkins();
+        if(skinsToGet == null)
+        {
+            return;
+        }
 
         Sprite skinPreviewSprite = skinSystem.GetSkinsScriptableObject().GetSkin(skinsToGet).skinPreviewSprite;
         skinPreview.sprite = skinPreviewSprite;
