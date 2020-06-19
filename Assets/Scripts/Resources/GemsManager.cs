@@ -45,6 +45,11 @@ public class GemsManager : MonoBehaviour
         onGemsQuantityChanged?.Invoke(currencyOwned);
     }
 
+    public int GetGemsCount()
+    {
+        return currencyOwned;
+    }
+
     public bool PaySomething(int amount)
     {
         if(currencyOwned < amount)

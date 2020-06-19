@@ -108,8 +108,10 @@ public class SkinSystem : MonoBehaviour
 
     public int GetNotOwnedSkinCount()
     {
+        if (skinStatusDictionary == null) return 0;
+
         int count = 0;
-        foreach(SkinStatus skinStatus in skinStatusDictionary.Values)
+        foreach (SkinStatus skinStatus in skinStatusDictionary.Values)
         {
             if(skinStatus.owned == false)
             {

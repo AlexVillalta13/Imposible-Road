@@ -3392,8 +3392,9 @@ GameObject:
   - component: {fileID: 1017934858}
   - component: {fileID: 1017934860}
   - component: {fileID: 1017934859}
+  - component: {fileID: 1017934861}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Score Elements Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3419,7 +3420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 174}
+  m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 1920, y: 580}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1017934859
@@ -3442,7 +3443,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_Spacing: 20
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -3455,6 +3456,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017934857}
   m_CullTransparentMesh: 0
+--- !u!114 &1017934861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017934857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a42be48b7abf145ac35c8885768636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probabilityToShowAd: 50
+  seeAdPanel: {fileID: 730141416}
+  buySkinPanel: {fileID: 2078431502}
 --- !u!1 &1029006484
 GameObject:
   m_ObjectHideFlags: 0
@@ -7486,7 +7502,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!1 &1963525057
 GameObject:
@@ -9277,7 +9293,7 @@ PrefabInstance:
     - target: {fileID: 5934848774439951608, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000005805851
+      value: 0.0000058058513
       objectReference: {fileID: 0}
     - target: {fileID: 5934848774439951608, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
@@ -9312,7 +9328,7 @@ PrefabInstance:
     - target: {fileID: 5934848775931850947, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000005805851
+      value: 0.0000058058513
       objectReference: {fileID: 0}
     - target: {fileID: 5934848775931850947, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
