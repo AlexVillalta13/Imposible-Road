@@ -47,6 +47,11 @@ public class SkinUIElementsUpdater : MonoBehaviour
 
             var dictionary = skinSystem.GetSkinStatusDictionary();
 
+            if(dictionary == null)
+            {
+                Debug.Log("Trying to acces skinSystem.GetSkinStatusDictionary() but is null");
+                return;
+            }
             skinStatus = dictionary[ID];
 
             UIElement.UpdateStatus(skinStatus);

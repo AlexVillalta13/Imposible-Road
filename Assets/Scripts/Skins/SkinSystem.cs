@@ -16,14 +16,10 @@ public class SkinSystem : MonoBehaviour
     public event Action OnSkinStatusChanged;
     public event Action<Material> OnSkinEquipped;
 
-    private void Awake()
+    async private void Awake()
     {
         BuildSkinStatusTable();
-    }
 
-
-    async private void Start()
-    {
         if (await SaveSystemAPI.ExistsAsync(identifier) == false)
         {
             //BuildSkinStatusTable();
@@ -33,6 +29,19 @@ public class SkinSystem : MonoBehaviour
 
         await LoadSkinData();
     }
+
+
+    //async private void Start()
+    //{
+    //    if (await SaveSystemAPI.ExistsAsync(identifier) == false)
+    //    {
+    //        //BuildSkinStatusTable();
+    //        await SaveSystemAPI.SaveAsync(identifier, skinStatusDictionary);
+    //        return;
+    //    }
+
+    //    await LoadSkinData();
+    //}
 
     private async Task LoadSkinData()
     {

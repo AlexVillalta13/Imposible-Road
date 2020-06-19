@@ -24,6 +24,7 @@ public class BuyNewSkin : MonoBehaviour
         if(canPay)
         {
             ShowOpenBoxScreen();
+            transform.parent.gameObject.SetActive(false);
         }
         else
         {

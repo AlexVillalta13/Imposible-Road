@@ -58,6 +58,7 @@ public class GemsManager : MonoBehaviour
             return false;
         }
         currencyOwned -= amount;
+        SaveSystemAPI.SaveAsync(identifier, currencyOwned);
 
         onGemsQuantityChanged?.Invoke(currencyOwned);
         return true;
