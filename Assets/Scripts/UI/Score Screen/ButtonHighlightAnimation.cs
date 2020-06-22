@@ -17,7 +17,7 @@ public class ButtonHighlightAnimation : MonoBehaviour
         baseSprite = image.sprite;
     }
 
-    private void OnEnable()
+    public void StartHighlightAnimation()
     {
         StartCoroutine(HighlightAnimation());
     }
