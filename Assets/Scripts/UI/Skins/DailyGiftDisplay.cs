@@ -11,6 +11,7 @@ public class DailyGiftDisplay : MonoBehaviour
     Button giftButton;
 
     GiftOnRealTime giftOnRealTime;
+    ButtonHighlightAnimation buttonHighlightAnimation;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class DailyGiftDisplay : MonoBehaviour
         giftButton = GetComponentInChildren<Button>();
 
         giftOnRealTime = FindObjectOfType<GiftOnRealTime>();
+        buttonHighlightAnimation = GetComponentInChildren<ButtonHighlightAnimation>();
     }
 
     private void OnEnable()
@@ -32,14 +34,22 @@ public class DailyGiftDisplay : MonoBehaviour
 
     private void SetupButtonAndText(bool canGetGift, TimeSpan countdown)
     {
-        int hours = countdown.Hours;
-        int minutes = countdown.Minutes;
-        int seconds = countdown.Seconds;
-        countdownText.text = String.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+        if(countdown == TimeSpan.Zero)
+        {
+            countdownText.text = "FREE GIFT";
+        } 
+        else
+        {
+            int hours = countdown.Hours;
+            int minutes = countdown.Minutes;
+            int seconds = countdown.Seconds;
+            countdownText.text = String.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+        }
 
         if (canGetGift)
         {
             giftButton.interactable = true;
+            buttonHighlightAnimation.StartHighlightAnimation();
         }
         else
         {

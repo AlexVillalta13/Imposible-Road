@@ -31,7 +31,6 @@ public class GiftOnRealTime : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Current Time: " + System.DateTime.Now);
 
         CalculateTimeDifference();
         CanGetGift();
@@ -47,7 +46,6 @@ public class GiftOnRealTime : MonoBehaviour
     {
         TimeSpan timeDifference = DateTime.Now - lastTimePlayed;
         timeToShow = hoursToGiftTimeSpan - timeDifference;
-        Debug.Log("Time to show: " + timeToShow);
 
     }
 
