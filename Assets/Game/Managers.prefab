@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 6956750827620597907}
   - component: {fileID: 6938916304856184545}
   m_Layer: 0
-  m_Name: Gift With Real Time Manager
+  m_Name: Real Time Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032cc4a9f05b4a24ead9a2fc89d16eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoursToGetGift: 30
 --- !u!1 &6400494890670223874
 GameObject:
   m_ObjectHideFlags: 0
