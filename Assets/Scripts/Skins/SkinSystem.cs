@@ -22,7 +22,6 @@ public class SkinSystem : MonoBehaviour
 
         if (await SaveSystemAPI.ExistsAsync(identifier) == false)
         {
-            //BuildSkinStatusTable();
             await SaveSystemAPI.SaveAsync(identifier, skinStatusDictionary);
             return;
         }
@@ -30,28 +29,17 @@ public class SkinSystem : MonoBehaviour
         await LoadSkinData();
     }
 
-
-    //async private void Start()
-    //{
-    //    if (await SaveSystemAPI.ExistsAsync(identifier) == false)
-    //    {
-    //        //BuildSkinStatusTable();
-    //        await SaveSystemAPI.SaveAsync(identifier, skinStatusDictionary);
-    //        return;
-    //    }
-
-    //    await LoadSkinData();
-    //}
-
     private async Task LoadSkinData()
     {
-        //BuildSkinStatusTable();
         Dictionary<string, SkinStatus> loadedSkinStatus = await SaveSystemAPI.LoadAsync<Dictionary<string, SkinStatus>>(identifier);
         foreach (string key in loadedSkinStatus.Keys)
         {
             skinStatusDictionary[key] = loadedSkinStatus[key];
         }
+    }
 
+    private void Start()
+    {
         ChangeEquipSkinStatus(SearchForEquippedSkin());
     }
 
@@ -79,7 +67,6 @@ public class SkinSystem : MonoBehaviour
                 return skinStatus.skinID;
             }
         }
-        Debug.LogError("SearchForEquippedSkin() haven't found any equipped skin");
         return null;
     }
 
@@ -87,6 +74,7 @@ public class SkinSystem : MonoBehaviour
     {
         Material materialToEquip = skinsScriptableObject.GetSkin(skinToEquip).materialSkin;
         OnSkinEquipped?.Invoke(materialToEquip);
+
     }
 
     public void BuySkin(string skinToBuyID)

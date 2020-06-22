@@ -4504,18 +4504,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeSpriteTime: 0.4
   orangeButtonSprite: {fileID: 21300000, guid: b78c853e7228c6d4e8b093018a737f82, type: 3}
---- !u!114 &1138046817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138046814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 648d5ef4870c1d64e9c5087b44c75e98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1202440210
 GameObject:
   m_ObjectHideFlags: 0
@@ -6600,18 +6588,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeSpriteTime: 0.4
   orangeButtonSprite: {fileID: 21300000, guid: b78c853e7228c6d4e8b093018a737f82, type: 3}
---- !u!114 &1606555453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606555446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 648d5ef4870c1d64e9c5087b44c75e98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1630600307
 GameObject:
   m_ObjectHideFlags: 0
@@ -10149,7 +10125,7 @@ PrefabInstance:
     - target: {fileID: 5934848774439951608, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000058058513
+      value: 0.000005805851
       objectReference: {fileID: 0}
     - target: {fileID: 5934848774439951608, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
@@ -10184,7 +10160,7 @@ PrefabInstance:
     - target: {fileID: 5934848775931850947, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000058058513
+      value: 0.000005805851
       objectReference: {fileID: 0}
     - target: {fileID: 5934848775931850947, guid: 2e7b864d9064fcd45a7c5be13bf5d4d1,
         type: 3}
