@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032cc4a9f05b4a24ead9a2fc89d16eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoursToGetGift: 30
+  hoursToGetGift: 12
 --- !u!1 &3511988443422617666
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +187,6 @@ GameObject:
   - component: {fileID: 5101171771817791520}
   - component: {fileID: 6710649804475242231}
   - component: {fileID: 4742938368136155775}
-  - component: {fileID: 2764808834296150460}
   m_Layer: 0
   m_Name: Notifications Manager
   m_TagString: Untagged
@@ -233,18 +232,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11f6718ddf63334489180782375ee5ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2764808834296150460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3511988443422617666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734bbd327b5a7cb4bb22d7d7a083bd30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6400494890670223874

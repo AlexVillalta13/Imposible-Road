@@ -8,7 +8,7 @@ public class GiftOnRealTime : MonoBehaviour
 {
     string timeSaved = "savedTime";
     DateTime lastTimePlayed;
-    TimeSpan timeToShow;
+    TimeSpan timeToShow = TimeSpan.Zero;
     [SerializeField] int hoursToGetGift = 12;
     TimeSpan hoursToGiftTimeSpan;
 
@@ -16,22 +16,20 @@ public class GiftOnRealTime : MonoBehaviour
 
     private void Awake()
     {
-        // TODO change to hours
-        hoursToGiftTimeSpan = new TimeSpan(0, 0, hoursToGetGift);
+        hoursToGiftTimeSpan = new TimeSpan(hoursToGetGift, 0, 0);
     }
 
     async void Start()
     {
         if (await SaveSystemAPI.ExistsAsync(timeSaved) == false)
         {
-            StartTimer();
+            return;
         }
         lastTimePlayed = await SaveSystemAPI.LoadAsync<DateTime>(timeSaved);
     }
 
     void Update()
     {
-
         CalculateTimeDifference();
         CanGetGift();
     }
@@ -44,9 +42,10 @@ public class GiftOnRealTime : MonoBehaviour
 
     private void CalculateTimeDifference()
     {
+        if (lastTimePlayed == null) { return; }
+
         TimeSpan timeDifference = DateTime.Now - lastTimePlayed;
         timeToShow = hoursToGiftTimeSpan - timeDifference;
-
     }
 
     private void CanGetGift()

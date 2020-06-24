@@ -20,7 +20,7 @@ public class NotificationsManager : MonoBehaviour
     {
         if(notifications != null)
         {
-            notifications.SendNotification(title, text, System.DateTime.Now.AddSeconds(hoursToNotification));
+            notifications.SendNotification(title, text, System.DateTime.Now.AddHours(hoursToNotification));
         }
     }
 }

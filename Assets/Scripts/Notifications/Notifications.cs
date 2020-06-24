@@ -30,8 +30,8 @@ public class Notifications : MonoBehaviour
         {
             Title = title,
             Text = text,
-            SmallIcon = "default",
-            LargeIcon = "default",
+            SmallIcon = "icon_small",
+            LargeIcon = "icon_large",
             FireTime = fireTime,
         };
 
