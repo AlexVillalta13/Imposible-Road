@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 349ca64b96ab3a249bd686d4a9e70f0e, type: 3}
+    totalSpriteSurfaceArea: 2355068
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 16bf5a001c7012645b72fc670a9a194f, type: 3}
+  - {fileID: 21300000, guid: 92a2899171f092b4a849f0cb4827b1d3, type: 3}
+  - {fileID: 21300000, guid: 07adc2a1dcef5e94eb64999debd1a0e9, type: 3}
+  - {fileID: 21300000, guid: 26550ba1739041c4687c071c6ce24097, type: 3}
+  - {fileID: 21300000, guid: 797306e13e2e5374d9e988b9530ecb7f, type: 3}
+  - {fileID: 21300000, guid: 6e328ed25781b3444a316f2f6ecbd41f, type: 3}
+  - {fileID: 21300000, guid: ced247532e57b254194b5bdd543c07a4, type: 3}
+  - {fileID: 21300000, guid: 434539a48b6984543a90527b7782c20f, type: 3}
+  - {fileID: 21300000, guid: eaf5cc35ecbf757469946747ec865324, type: 3}
+  - {fileID: 21300000, guid: 6cd98d160804dd441b0d478b7749a652, type: 3}
+  - {fileID: 21300000, guid: f65b49e69ba3e2f468ea2a4448d67803, type: 3}
+  - {fileID: 21300000, guid: e1cc3ce609948004c826bf134137f280, type: 3}
+  - {fileID: 21300000, guid: bb7d51f628ad7124bb26d3b8330dfebe, type: 3}
+  - {fileID: 21300000, guid: 6bad5928f954bad4ba263f2b99f7eb3e, type: 3}
+  - {fileID: 21300000, guid: ff01e9a9efc7937488075b2f86279eec, type: 3}
+  - {fileID: 21300000, guid: da63e79ced2c01a428d466980dc698f4, type: 3}
+  - {fileID: 21300000, guid: 44d8c6fc88d7dc240a50efe3e8fc4698, type: 3}
+  - {fileID: 21300000, guid: bf7861bdc555a14498e8af6e75c4d827, type: 3}
+  - {fileID: 21300000, guid: 2f99bdbd37bac8e4bb23674dd853b814, type: 3}
+  - {fileID: 21300000, guid: b78c853e7228c6d4e8b093018a737f82, type: 3}
+  - {fileID: 21300000, guid: 55e6367ef0fa971458ccf1f70a953c75, type: 3}
+  - {fileID: 21300000, guid: 0e6091de22ad63c4aa08d28b09d2dd86, type: 3}
+  - {fileID: 21300000, guid: ba0479debc685684a8f2e55694e84146, type: 3}
+  - {fileID: 21300000, guid: 9a6b9b5f2e791454aa8abf1c34fc18d7, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Orange Button Pressed
+  - White Skin Preview
+  - Red Black Skin Preview
+  - Video Icon
+  - Blue Button
+  - Flat Gift Icon
+  - Yellow Button
+  - Left Arrow
+  - White Blue Skin Preview
+  - Light Blue Skin Preview
+  - Lock
+  - Right Arrow
+  - Mistery Skin Preview
+  - Green Skin Skin Preview
+  - Orange Skin Preview
+  - Right Pointer
+  - Yellow Button Pressed
+  - Purple Skin Preview
+  - Diamond
+  - Orange Button
+  - home
+  - Grey Button
+  - Cart Icon
+  - Blue Button Pressed
+  m_Tag: UI Atlas
+  m_IsVariant: 0
