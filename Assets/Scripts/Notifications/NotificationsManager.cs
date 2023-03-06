@@ -20,7 +20,9 @@ public class NotificationsManager : MonoBehaviour
     {
         if(notifications != null)
         {
+#if UNITY_ANDROID
             notifications.SendNotification(title, text, System.DateTime.Now.AddHours(hoursToNotification));
+#endif
         }
     }
 }
