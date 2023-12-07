@@ -8,11 +8,13 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
 {
 #if UNITY_IOS
     string gameID = "3665058";
+    string rewardedVideo = "iOS_Rewarded";
 #endif
 #if UNITY_ANDROID
     string gameID = "3665059";
+    string rewardedVideo = "Android_Rewarded";
 #endif
-    string rewardedVideo = "rewardedVideo";
+
 
     [SerializeField] bool testMode = false;
     [SerializeField] EventSystem eventSystemPrefab;
